@@ -1,0 +1,127 @@
+.page-standard .page-title,
+.page-home .hero-title {
+  max-width: 14ch;
+}
+
+.page-home .page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  background: var(--color-navy-deep);
+}
+
+.page-home .hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.page-home .hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(12, 38, 68, 0.8) 0%, rgba(12, 38, 68, 0.5) 34%, rgba(12, 38, 68, 0.01) 62%, rgba(12, 38, 68, 0.08) 50%),
+    linear-gradient(180deg, rgba(12, 38, 68, 0.04), rgba(12, 38, 68, 0.28));
+}
+
+.page-home .hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.page-home .hero-grid-full {
+  position: relative;
+  z-index: 1;
+  padding-top: 8.75rem;
+  padding-bottom: 3.5rem;
+}
+
+.page-home .hero-copy {
+  max-width: 42rem;
+}
+
+.page-home .hero-title,
+.page-home .hero-lead,
+.page-home .hero-metrics dd {
+  color: white;
+}
+
+.page-home .hero-title {
+  text-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.page-home .hero-lead {
+  max-width: 38rem;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.page-home .hero-metrics div {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+}
+
+.page-home .hero-metrics dt {
+  color: #ffb27b;
+}
+
+.page-home .hero-panel {
+  position: static;
+  align-self: end;
+  justify-self: end;
+  width: min(320px, 100%);
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 991px) {
+  .page-home .hero-grid-full {
+    padding-top: 7.25rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .page-home .hero-panel {
+    justify-self: stretch;
+    margin-bottom: 0;
+  }
+}
+
+.copy-card,
+.contact-panel {
+  height: 100%;
+}
+
+.contact-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.contact-form,
+.copy-card,
+.contact-panel {
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.form-group label {
+  color: var(--color-navy-deep);
+}
+
+.form-control {
+  min-height: 3.35rem;
+  border-radius: 14px;
+  border-color: rgba(18, 59, 104, 0.14);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+  border-color: rgba(239, 106, 17, 0.62);
+  box-shadow: 0 0 0 0.22rem rgba(239, 106, 17, 0.14);
+}
+
+.contact-note {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(15, 38, 64, 0.08);
+}

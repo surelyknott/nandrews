@@ -1,0 +1,40 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-title">{{ site.businessName }}</p>
+      <p class="footer-copy">{{ site.tagline }}</p>
+      {% for line in site.addressLines %}
+      <p class="footer-copy">{{ line }}</p>
+      {% endfor %}
+      <p class="footer-copy">{{ site.serviceArea }}</p>
+    </div>
+
+    <div>
+      <p class="footer-title">Quick links</p>
+      <ul class="footer-links">
+        {% for item in navigation %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div>
+      <p class="footer-title">Contact</p>
+      <ul class="footer-links">
+        {% if site.contactEmail %}
+        <li><a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></li>
+        {% endif %}
+        <li><a href="tel:{{ site.contactPhoneHref or site.contactPhone }}">{{ site.contactPhone }}</a></li>
+        <li>{{ site.openingHours[0].hours }} Mon-Fri</li>
+      </ul>
+      <div class="footer-socials">
+        {% for social in site.socials %}
+        <a href="{{ social.url }}" target="_blank" rel="noopener">{{ social.label }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="y"></span> {{ site.businessName }}</span>
+  </div>
+</footer>

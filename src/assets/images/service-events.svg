@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title">
+  <title>Events placeholder</title>
+  <rect width="640" height="480" fill="#efe3cf"/>
+  <rect x="72" y="188" width="496" height="188" rx="28" fill="#123524"/>
+  <circle cx="168" cy="144" r="44" fill="#d7965b"/>
+  <circle cx="254" cy="128" r="28" fill="#234f39"/>
+  <circle cx="326" cy="152" r="34" fill="#d7965b"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title">
+  <title>Business services placeholder</title>
+  <rect width="640" height="480" fill="#efe6d5"/>
+  <rect x="86" y="106" width="468" height="288" rx="28" fill="#123524"/>
+  <rect x="142" y="164" width="122" height="162" rx="18" fill="#fdfaf4"/>
+  <rect x="292" y="164" width="206" height="26" rx="13" fill="#d7965b"/>
+  <rect x="292" y="220" width="170" height="18" rx="9" fill="#fdfaf4"/>
+  <rect x="292" y="260" width="188" height="18" rx="9" fill="#fdfaf4" opacity=".78"/>
+</svg>

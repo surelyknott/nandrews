@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title">
+  <title>Template services placeholder</title>
+  <rect width="960" height="720" fill="#f4ead7"/>
+  <rect x="100" y="100" width="760" height="520" rx="40" fill="#123524"/>
+  <rect x="166" y="164" width="276" height="392" rx="30" fill="#fdf8ef"/>
+  <rect x="498" y="164" width="296" height="120" rx="24" fill="#d7965b"/>
+  <rect x="498" y="314" width="296" height="84" rx="24" fill="#fdf8ef"/>
+  <rect x="498" y="428" width="296" height="128" rx="24" fill="#efe3cf"/>
+</svg>

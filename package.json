@@ -1,0 +1,24 @@
+{
+  "name": "booking-system-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build:css": "sass src/styles/main.scss src/assets/css/main.css --style=expanded --embed-source-map",
+    "build:css:prod": "sass src/styles/main.scss src/assets/css/main.css --style=compressed --no-source-map",
+    "build:site": "eleventy",
+    "build": "npm run build:css && npm run build:site",
+    "watch:css": "sass --watch src/styles/main.scss:src/assets/css/main.css --style=expanded --embed-source-map",
+    "dev:site": "eleventy --serve",
+    "dev": "sh -c 'npm run watch:css & npm run dev:site & wait'",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "google-auth-library": "^9.14.0",
+    "stripe": "^14.24.0"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "sass": "^1.86.3"
+  }
+}

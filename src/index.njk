@@ -1,0 +1,128 @@
+---
+layout: layouts/base.njk
+title: Home
+description: Friendly servicing, diagnostics, repairs and MOT in Southampton.
+bodyClass: page-home
+---
+<section class="page-hero">
+  <div class="hero-media">
+    <img src="/assets/images/mechanic-temp.png" alt="Mechanic in workshop at Nandrews Garage">
+  </div>
+  <div class="container hero-grid hero-grid-full">
+    <div class="hero-copy">
+      <span class="section-kicker">Southampton garage</span>
+      <h1 class="hero-title">Friendly servicing, diagnostics, repairs and MOT for all model vehicles.</h1>
+      <p class="hero-lead">No jargon. No pressure. Just honest, reliable vehicle care from a local garage people feel comfortable coming back to.</p>
+      <div class="hero-actions">
+        <a class="btn btn-brand btn-lg" href="tel:{{ site.contactPhoneHref or site.contactPhone }}">Call {{ site.contactPhone }}</a>
+        <a class="btn btn-outline-brand btn-lg" href="/services/">View services</a>
+      </div>
+      <dl class="hero-metrics">
+        <div>
+          <dt>Local garage</dt>
+          <dd>Based on Shirley Road in Southampton</dd>
+        </div>
+        <div>
+          <dt>Approach</dt>
+          <dd>Honest advice and practical service</dd>
+        </div>
+        <div>
+          <dt>What we cover</dt>
+          <dd>MOT, servicing, diagnostics and repairs</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-panel">
+      <p class="hero-panel-title">Why people choose Nandrews</p>
+      <ul>
+        <li>Friendly and approachable service</li>
+        <li>Clear advice without the pressure</li>
+        <li>Trusted local garage support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-kicker">Services</span>
+      <h2>Garage services people actually look for.</h2>
+    </div>
+
+    <div class="service-grid">
+      {% for service in services %}
+      <article class="service-card">
+        <img src="{{ service.image }}" alt="{{ service.title }}">
+        <div class="service-card-body">
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.summary }}</p>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section-block section-block-alt">
+  <div class="container">
+    <div class="section-heading">
+      <span class="section-kicker">Why choose us</span>
+      <h2>Professional, reliable and easy to deal with.</h2>
+    </div>
+
+    <div class="process-grid">
+      <article class="process-card">
+        <span>01</span>
+        <h3>Honest advice</h3>
+        <p>The aim is to explain what needs doing clearly, without making customers feel pressured or talked down to.</p>
+      </article>
+      <article class="process-card">
+        <span>02</span>
+        <h3>Skilled diagnostics</h3>
+        <p>From warning lights to sensor issues and harder-to-find faults, the team works methodically to get to the root of the problem.</p>
+      </article>
+      <article class="process-card">
+        <span>03</span>
+        <h3>Fair local service</h3>
+        <p>Nandrews is positioned as the kind of local garage people recommend because the work is solid and the service feels straightforward.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section-block section-block-alt">
+  <div class="container">
+    <div class="cta-panel">
+      <div>
+        <span class="section-kicker">Visit or call</span>
+        <h2>Need to speak to someone about your vehicle?</h2>
+        <p>Call the garage, send a message, or drop by during opening hours. Whether it is a routine service or a fault that needs checking properly, the goal is to make the next step clear.</p>
+      </div>
+      <a class="btn btn-brand btn-lg" href="/contact/">Contact Nandrews</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container split-grid">
+    <article class="surface-card copy-card">
+      <span class="section-kicker">Find us</span>
+      <h2>{{ site.addressLines[0] }}</h2>
+      <p>{{ site.addressLines[1] }}</p>
+      <p>{{ site.serviceArea }}</p>
+      <a class="btn btn-outline-brand" href="tel:{{ site.contactPhoneHref or site.contactPhone }}">Call {{ site.contactPhone }}</a>
+    </article>
+
+    <article class="surface-card copy-card">
+      <span class="section-kicker">Opening hours</span>
+      <h2>Open Monday to Friday.</h2>
+      <ul class="list-clean">
+        {% for item in site.openingHours %}
+        <li><strong>{{ item.day }}:</strong> {{ item.hours }}</li>
+        {% endfor %}
+      </ul>
+    </article>
+  </div>
+</section>

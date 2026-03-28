@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title">
+  <title>Template about placeholder</title>
+  <rect width="960" height="720" fill="#f6efe2"/>
+  <rect x="96" y="114" width="768" height="492" rx="36" fill="#fdfaf4"/>
+  <circle cx="270" cy="310" r="118" fill="#123524"/>
+  <circle cx="270" cy="266" r="44" fill="#f4ead7"/>
+  <path d="M192 390c26-44 54-66 78-66 24 0 52 22 78 66" fill="#d7965b"/>
+  <rect x="450" y="228" width="260" height="26" rx="13" fill="#d7965b"/>
+  <rect x="450" y="286" width="196" height="20" rx="10" fill="#234f39"/>
+  <rect x="450" y="332" width="238" height="20" rx="10" fill="#234f39" opacity=".82"/>
+  <rect x="450" y="378" width="170" height="20" rx="10" fill="#234f39" opacity=".72"/>
+</svg>

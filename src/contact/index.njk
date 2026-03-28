@@ -1,0 +1,87 @@
+---
+layout: layouts/base.njk
+title: Contact
+description: Contact Nandrews Garage Ltd in Southampton.
+bodyClass: page-standard
+useContactScripts: true
+---
+<section class="page-banner">
+  <div class="container banner-grid">
+    <div>
+      <span class="section-kicker">Contact</span>
+      <h1 class="page-title">Call, message, or visit the garage.</h1>
+      <p class="page-lead">Use the form if you want to explain the issue in advance, or call directly if you would rather speak to someone about the vehicle.</p>
+    </div>
+    <img src="/assets/images/scene-contact.svg" alt="Nandrews Garage contact page visual placeholder">
+  </div>
+</section>
+
+<section class="section-block">
+  <div class="container contact-grid">
+    <section class="surface-card">
+      <form class="contact-form" name="contact" method="POST" action="/contact/?success=1" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="d-none">
+          <label>Don’t fill this out: <input name="bot-field"></label>
+        </p>
+
+        <div class="alert alert-success d-none" id="contactSuccess" role="alert">
+          Thanks. Your message has been sent and the team will reply shortly.
+        </div>
+
+        <div class="form-group">
+          <label for="contactName">Name</label>
+          <input id="contactName" name="name" type="text" class="form-control" autocomplete="name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactEmail">Email</label>
+          <input id="contactEmail" name="email" type="email" class="form-control" autocomplete="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="contactPhone">Phone</label>
+          <input id="contactPhone" name="phone" type="tel" class="form-control" autocomplete="tel">
+        </div>
+
+        <div class="form-group">
+          <label for="contactMessage">Message</label>
+          <textarea id="contactMessage" name="message" class="form-control" rows="6" required></textarea>
+        </div>
+
+        <button class="btn btn-brand btn-lg" type="submit">Send message</button>
+      </form>
+    </section>
+
+    <aside class="surface-card contact-panel">
+      <span class="section-kicker">Direct contact</span>
+      <h2>Nandrews Garage Ltd</h2>
+      <ul class="list-clean">
+        <li><strong>Phone:</strong> <a href="tel:{{ site.contactPhoneHref or site.contactPhone }}">{{ site.contactPhone }}</a></li>
+        {% for line in site.addressLines %}
+        <li><strong>{% if loop.first %}Address:{% else %}&nbsp;{% endif %}</strong> {{ line }}</li>
+        {% endfor %}
+        <li><strong>Area:</strong> {{ site.serviceArea }}</li>
+      </ul>
+
+      <div class="contact-note">
+        <p>Useful things to include:</p>
+        <ul class="list-clean">
+          <li>vehicle registration or model</li>
+          <li>warning lights or symptoms</li>
+          <li>whether it is for MOT, service, diagnostics, or repair</li>
+          <li>your preferred day or timing</li>
+        </ul>
+      </div>
+
+      <div class="contact-note">
+        <p>Opening hours:</p>
+        <ul class="list-clean">
+          {% for item in site.openingHours %}
+          <li><strong>{{ item.day }}:</strong> {{ item.hours }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>

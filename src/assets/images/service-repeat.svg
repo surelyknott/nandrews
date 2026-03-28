@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title">
+  <title>Recurring work placeholder</title>
+  <rect width="640" height="480" fill="#f7f1e5"/>
+  <circle cx="320" cy="238" r="124" fill="#123524"/>
+  <path d="M320 140a98 98 0 0 1 86 50" fill="none" stroke="#d7965b" stroke-linecap="round" stroke-width="18"/>
+  <path d="M406 190l-8 52 48-19" fill="#d7965b"/>
+  <path d="M320 336a98 98 0 0 1-86-50" fill="none" stroke="#f4ead7" stroke-linecap="round" stroke-width="18"/>
+  <path d="M234 286l8-52-48 19" fill="#f4ead7"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title">
+  <title>Template contact placeholder</title>
+  <rect width="960" height="720" fill="#f8f3ea"/>
+  <rect x="164" y="128" width="632" height="456" rx="34" fill="#fdfaf4"/>
+  <rect x="216" y="198" width="528" height="318" rx="28" fill="#123524"/>
+  <path d="M272 250h416L480 400z" fill="#d7965b"/>
+  <path d="M272 468l138-120 70 54 70-54 138 120" fill="none" stroke="#f4ead7" stroke-linecap="round" stroke-linejoin="round" stroke-width="18"/>
+</svg>

@@ -1,0 +1,33 @@
+<header class="site-header">
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container site-nav">
+      <a class="navbar-brand brand-mark" href="/">
+        <img src="{{ site.logoPath }}" alt="{{ site.businessName }} logo" width="48" height="48">
+        <span>
+          <strong>{{ site.businessName }}</strong>
+          <small>{{ site.tagline }}</small>
+        </span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#primaryNav" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="primaryNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          {% for item in navigation %}
+          {% set isActive = page.url == item.url %}
+          <li class="nav-item">
+            <a class="nav-link{% if isActive %} is-active{% endif %}" href="{{ item.url }}">{{ item.label }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+
+        <div class="nav-actions">
+          <a class="btn btn-sm btn-outline-brand" href="/contact/">Contact</a>
+          <a class="btn btn-sm btn-brand" href="tel:{{ site.contactPhoneHref or site.contactPhone }}">Call now</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

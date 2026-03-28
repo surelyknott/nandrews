@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title">
+  <title>Template hero placeholder</title>
+  <rect width="960" height="720" fill="#efe3cf"/>
+  <circle cx="770" cy="140" r="90" fill="#d7965b"/>
+  <rect x="86" y="404" width="788" height="206" rx="34" fill="#123524"/>
+  <rect x="162" y="300" width="490" height="180" rx="28" fill="#f7f0e3"/>
+  <rect x="208" y="338" width="260" height="18" rx="9" fill="#d7965b"/>
+  <rect x="208" y="380" width="188" height="18" rx="9" fill="#234f39"/>
+  <rect x="680" y="332" width="106" height="106" rx="24" fill="#f7f0e3"/>
+</svg>
