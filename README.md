@@ -1,89 +1,96 @@
-# Booking System Template
+# Nandrews Garage Ltd
 
-Reusable local-business site template with:
+Website project for Nandrews Garage Ltd in Southampton.
 
-- a single live booking calendar
-- Stripe Checkout for deposits or full payment
-- Google Sheets as the booking source of truth
-- Netlify Functions for availability and booking automation
-- Eleventy layouts/partials for page structure
-- SCSS partials for maintainable styling
+This repo contains the client site build, using:
 
-The repo includes sample content, but
-the build is oriented around a cleaner four-page template:
+- Eleventy for page generation
+- SCSS for styling
+- Netlify-ready project structure
+
+## Project purpose
+
+The site is designed to present Nandrews as a friendly, trustworthy local garage offering:
+
+- servicing
+- diagnostics
+- repairs
+- MOT
+
+It is currently structured as a four-page site:
 
 - home
 - about
 - services
 - contact
 
-## Current architecture
-
-- Static site build: Eleventy
-- Styling: SCSS compiled to `src/assets/css/main.css`
-- Booking logic shared between browser and backend
-- Availability source: Google Sheet via Netlify Function
-- Payments: Stripe Checkout
-- Booking storage: Google Sheet append on webhook
-
-## Source structure
-
-- `src/`
-  Eleventy source files, layouts, partials, and front-end assets
-- `shared/template-config.js`
-  Business-facing site and booking configuration
-- `shared/booking-rules.js`
-  Shared date, pricing, and payment logic
-- `netlify/functions/`
-  Availability, checkout, and webhook handlers
-- `tests/`
-  Booking-rule tests
-
-The intended publish target is the Eleventy output in `dist/`.
-
-## Quick start
-
-1. Install dependencies:
-   - `npm install`
-2. Copy environment variables from `.env.example`
-3. Read `BOOKING_SETUP.md`
-4. Build the site:
-   - `npm run build`
-5. Deploy to Netlify
-
-## Useful scripts
-
-- `npm run build`
-- `npm run build:css`
-- `npm run build:css:prod`
-- `npm run build:site`
-- `npm run dev`
-- `npm run watch:css`
-- `npm test`
-
 ## Local development
 
-- `npm run dev`
-  Runs Eleventy and SCSS watch together for local work.
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the local dev server with SCSS watching:
+
+```bash
+npm run dev
+```
+
+This runs:
+
+- Eleventy local server
+- SCSS watch and rebuild
+
+## Build commands
+
+Build the site for local review:
+
+```bash
+npm run build
+```
+
+Other useful scripts:
+
 - `npm run build:css`
-  Writes readable CSS for development.
+  Builds readable CSS for development
 - `npm run build:css:prod`
-  Writes compressed CSS if you want a minified output.
+  Builds compressed CSS
+- `npm run build:site`
+  Runs Eleventy only
 
-## Files to edit first
+## Key files
 
+- `src/index.njk`
+  Homepage
+- `src/about/index.njk`
+  About page
+- `src/services/index.njk`
+  Services page
+- `src/contact/index.njk`
+  Contact page
 - `shared/template-config.js`
-  Business name, contact details, booking rules, analytics ID, and shared copy
-- `src/_data/navigation.js`
-  Simplified page navigation
+  Site-wide business details and shared config
 - `src/_data/services.js`
-  Services page and homepage service cards
-- `src/_includes/partials/`
-  Shared nav/footer chrome
+  Service card content
 - `src/styles/`
-  SCSS partials
+  SCSS source files
+- `src/assets/images/`
+  Site image assets
 
-## Current limitations
+## Output
 
-- A checkout race condition is still possible if two users try to pay for the same date at nearly the same time.
-- The built-in artwork is intentionally generic placeholder media and should be replaced for the final client package.
+- `dist/`
+  Generated site output
+
+`dist/` is ignored in git and should be regenerated locally or in deployment.
+
+## Deployment notes
+
+The project is structured for Netlify deployment and includes:
+
+- `netlify.toml`
+- `netlify/functions/`
+
+If booking or contact-related backend behavior is extended later, review the Netlify function setup before deployment.
