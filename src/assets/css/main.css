@@ -459,7 +459,7 @@ h4 {
     grid-template-columns: 1fr;
   }
   .hero-metrics {
-    grid-template-columns: 1fr;
+    display: none;
   }
   .hero-panel {
     position: static;
