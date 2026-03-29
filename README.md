@@ -17,6 +17,14 @@ The site is designed to present Nandrews as a friendly, trustworthy local garage
 - repairs
 - MOT
 
+The homepage also includes an appointment booking flow for:
+
+- selecting a service
+- picking a weekday date
+- choosing an available time slot
+- sending booking details to Google Sheets
+- sending an optional email confirmation when an email address is provided
+
 It is currently structured as a four-page site:
 
 - home
@@ -94,3 +102,27 @@ The project is structured for Netlify deployment and includes:
 - `netlify/functions/`
 
 If booking or contact-related backend behavior is extended later, review the Netlify function setup before deployment.
+
+## Booking setup
+
+The appointment form uses:
+
+- `netlify/functions/availability.js`
+  Reads booked slots from Google Sheets
+- `netlify/functions/submit-appointment.js`
+  Saves new appointments and optionally sends confirmation emails
+
+Expected Google Sheet columns:
+
+- `date`
+- `time`
+- `service`
+- `name`
+- `email`
+- `phone`
+- `vehicle`
+- `notes`
+- `status`
+- `created_at`
+
+If the sheet tab is empty, the first successful appointment submission will create this header row automatically before adding the booking.
