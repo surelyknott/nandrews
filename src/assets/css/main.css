@@ -494,7 +494,7 @@ h4 {
 .process-card,
 .value-card {
   overflow: hidden;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   border: 1px solid var(--color-line);
   background: rgba(255, 255, 255, 0.78);
   box-shadow: var(--shadow-soft);
