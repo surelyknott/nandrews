@@ -79,7 +79,6 @@ useBookingScripts: true
               <h3 class="appointment-panel-title">Pick your service and date</h3>
               <p class="helper-copy">Choose what the vehicle needs, then pick a weekday appointment.</p>
             </div>
-            <span class="appointment-panel-badge">Weekdays only</span>
           </div>
 
           <div class="appointment-selection-group">
@@ -96,7 +95,6 @@ useBookingScripts: true
             <div class="appointment-date-panel appointment-date-trigger" id="bookingDatePanel">
               <label for="bookingDate">Select date</label>
               <input id="bookingDate" name="date" type="date" class="form-control">
-              <div class="form-note" id="calendarHelper">{{ site.copy.calendarHelper }}</div>
             </div>
           </div>
 
@@ -105,16 +103,10 @@ useBookingScripts: true
               <span>Selected day</span>
               <strong id="selectedDateLabel">Choose a weekday</strong>
             </div>
-            <div>
-              <span>Available slots</span>
-              <strong id="availableSlotCount">Select a date</strong>
-            </div>
           </div>
 
           <ul class="appointment-meta-list">
             <li>Monday to Friday appointments only</li>
-            <li>30 minute slot spacing during opening hours</li>
-            <li>If nothing fits, call the garage directly</li>
           </ul>
         </section>
 

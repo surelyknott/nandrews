@@ -232,7 +232,6 @@ const updateSummary = () => {
   const dateSummary = document.getElementById('selectedDateSummary');
   const timeSummary = document.getElementById('selectedTimeSummary');
   const dateLabel = document.getElementById('selectedDateLabel');
-  const slotCount = document.getElementById('availableSlotCount');
   const hiddenTime = document.getElementById('selectedTime');
   const submitBtn = document.getElementById('bookingSubmit');
   const slotIntro = document.getElementById('guestPricingSummary');
@@ -259,18 +258,6 @@ const updateSummary = () => {
       : state.selectedService
         ? 'Choose a weekday'
         : 'Choose a service first';
-  }
-
-  if (slotCount) {
-    if (!state.selectedService) {
-      slotCount.textContent = 'Choose a service first';
-    } else if (!state.selectedDate) {
-      slotCount.textContent = 'Select a date';
-    } else if (availableSlots.length === 1) {
-      slotCount.textContent = '1 slot available';
-    } else {
-      slotCount.textContent = `${availableSlots.length} slots available`;
-    }
   }
 
   if (hiddenTime) {
