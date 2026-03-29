@@ -17,29 +17,20 @@ useBookingScripts: true
         <a class="btn btn-brand btn-lg" href="tel:{{ site.contactPhoneHref or site.contactPhone }}">Call {{ site.contactPhone }}</a>
         <a class="btn btn-outline-brand btn-lg" href="#book-appointment">Book a service</a>
       </div>
-      <dl class="hero-metrics">
-        <div>
-          <dt>Local garage</dt>
-          <dd>Based on Shirley Road in Southampton</dd>
-        </div>
-        <div>
-          <dt>Approach</dt>
-          <dd>Honest advice and practical service</dd>
-        </div>
-        <div>
-          <dt>What we cover</dt>
-          <dd>MOT, servicing, diagnostics and repairs</dd>
-        </div>
-      </dl>
     </div>
 
-    <div class="hero-panel">
-      <p class="hero-panel-title">Why people choose Nandrews</p>
-      <ul>
-        <li>Friendly and approachable service</li>
-        <li>Clear advice without the pressure</li>
-        <li>Trusted local garage support</li>
-      </ul>
+    <div class="hero-services-shell">
+      <div class="service-grid hero-service-grid">
+        {% for service in services %}
+        <article class="service-card">
+          <img src="{{ service.image }}" alt="{{ service.title }}">
+          <div class="service-card-body">
+            <h3>{{ service.title }}</h3>
+            <p>{{ service.summary }}</p>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>
@@ -202,27 +193,6 @@ useBookingScripts: true
           <button class="btn btn-brand btn-lg w-100" type="submit" id="bookingSubmit" disabled>Confirm booking</button>
         </form>
       </section>
-    </div>
-  </div>
-</section>
-
-<section class="section-block">
-  <div class="container">
-    <div class="section-heading">
-      <span class="section-kicker">Services</span>
-      <h2>Garage services people actually look for.</h2>
-    </div>
-
-    <div class="service-grid">
-      {% for service in services %}
-      <article class="service-card">
-        <img src="{{ service.image }}" alt="{{ service.title }}">
-        <div class="service-card-body">
-          <h3>{{ service.title }}</h3>
-          <p>{{ service.summary }}</p>
-        </div>
-      </article>
-      {% endfor %}
     </div>
   </div>
 </section>

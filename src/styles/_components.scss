@@ -136,4 +136,13 @@
   .value-grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-service-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .hero-service-grid .service-card {
+    min-width: 0;
+  }
 }
