@@ -88,21 +88,18 @@ const updateDateInputState = () => {
   const panel = document.getElementById('bookingDatePanel');
   const dateInput = getDateInput();
   const helper = document.getElementById('calendarHelper');
-  const isEnabled = Boolean(state.selectedService);
 
   if (panel) {
-    panel.classList.toggle('is-disabled', !isEnabled);
-    panel.setAttribute('aria-disabled', String(!isEnabled));
+    panel.classList.remove('is-disabled');
+    panel.setAttribute('aria-disabled', 'false');
   }
 
   if (dateInput) {
-    dateInput.disabled = !isEnabled;
+    dateInput.disabled = false;
   }
 
   if (helper) {
-    helper.textContent = isEnabled
-      ? templateConfig.copy.calendarHelper
-      : 'Choose a service first to unlock weekday availability.';
+    helper.textContent = templateConfig.copy.calendarHelper;
   }
 };
 
@@ -182,7 +179,6 @@ const initDatePickerTrigger = () => {
   if (!panel || !dateInput) return;
 
   panel.addEventListener('click', () => {
-    if (dateInput.disabled) return;
     openDatePicker();
   });
 };
