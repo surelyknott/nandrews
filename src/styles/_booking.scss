@@ -205,27 +205,6 @@
   color: var(--color-navy-deep);
 }
 
-.calendar-status {
-  color: var(--color-muted);
-  font-size: 0.92rem;
-  text-align: right;
-}
-
-.appointment-slots-meta {
-  display: grid;
-  justify-items: end;
-  gap: 0.55rem;
-}
-
-.booking-shortcut-btn {
-  min-width: 10.5rem;
-  padding-block: 0.68rem;
-}
-
-.booking-shortcut-btn:disabled {
-  opacity: 0.72;
-}
-
 .booking-form {
   display: grid;
   gap: 1rem;
@@ -384,14 +363,6 @@ textarea.form-control {
 
   .booking-card-head {
     flex-direction: column;
-  }
-
-  .calendar-status {
-    text-align: left;
-  }
-
-  .appointment-slots-meta {
-    justify-items: stretch;
   }
 
   .time-slot-grid {

@@ -10,11 +10,8 @@ const state = {
   timeSlots: [],
   selectedService: '',
   selectedDate: '',
-  selectedTime: '',
-  availabilityLoaded: false
+  selectedTime: ''
 };
-
-const BOOKING_LOOKAHEAD_DAYS = 90;
 
 const normalizeStatus = (status) => String(status || '').trim().toLowerCase();
 
@@ -179,39 +176,6 @@ const updateDetailsState = () => {
   }
 };
 
-const findNextAvailableDate = () => {
-  const startDate = state.selectedDate || getTodayIso();
-
-  for (let dayOffset = 0; dayOffset <= BOOKING_LOOKAHEAD_DAYS; dayOffset += 1) {
-    const candidate = bookingRules.addDays(startDate, dayOffset);
-    if (!candidate) continue;
-    if (getAvailableSlotsForDate(candidate).length) return candidate;
-  }
-
-  return '';
-};
-
-const updateNextAvailableButton = () => {
-  const button = document.getElementById('nextAvailableBtn');
-  if (!button) return;
-
-  if (!state.selectedService) {
-    button.disabled = true;
-    button.textContent = 'Choose service first';
-    return;
-  }
-
-  if (!state.availabilityLoaded) {
-    button.disabled = true;
-    button.textContent = 'Loading slots…';
-    return;
-  }
-
-  const nextAvailableDate = findNextAvailableDate();
-  button.disabled = !nextAvailableDate;
-  button.textContent = nextAvailableDate ? 'Next available' : 'No slots found';
-};
-
 const initDatePickerTrigger = () => {
   const panel = document.getElementById('bookingDatePanel');
   const dateInput = getDateInput();
@@ -332,19 +296,16 @@ const updateSummary = () => {
   updateDateInputState();
   updateProgressState();
   updateDetailsState();
-  updateNextAvailableButton();
 };
 
 const renderTimeSlots = () => {
   const slotGrid = document.getElementById('timeSlotGrid');
-  const statusEl = document.getElementById('calendarStatus');
   if (!slotGrid) return;
 
   slotGrid.innerHTML = '';
 
   if (!state.selectedService) {
     slotGrid.innerHTML = '<p class="time-slot-empty">Choose a service first, then select a weekday to view available times.</p>';
-    if (statusEl) statusEl.textContent = '';
     state.selectedTime = '';
     updateSummary();
     return;
@@ -352,7 +313,6 @@ const renderTimeSlots = () => {
 
   if (!state.selectedDate) {
     slotGrid.innerHTML = '<p class="time-slot-empty">Select a date to see available times.</p>';
-    if (statusEl) statusEl.textContent = '';
     state.selectedTime = '';
     updateSummary();
     return;
@@ -360,18 +320,11 @@ const renderTimeSlots = () => {
 
   if (!bookingRules.isBusinessDay(state.selectedDate, templateConfig.booking.businessDays)) {
     slotGrid.innerHTML = '<p class="time-slot-empty">Online booking is only available Monday to Friday.</p>';
-    if (statusEl) statusEl.textContent = 'Weekday slots only';
     updateSummary();
     return;
   }
 
   const availableSlots = getAvailableSlotsForDate(state.selectedDate);
-  if (statusEl) {
-    statusEl.textContent = availableSlots.length
-      ? formatDateLong(state.selectedDate)
-      : 'No slots available on this date';
-  }
-
   if (!availableSlots.length) {
     slotGrid.innerHTML = '<p class="time-slot-empty">No online slots are available for this date. Please choose another day or call the garage.</p>';
     state.selectedTime = '';
@@ -432,13 +385,9 @@ const parseJsonResponse = async (response, fallbackMessage) => {
 };
 
 const loadAvailability = async () => {
-  const statusEl = document.getElementById('calendarStatus');
   const slotGrid = document.getElementById('timeSlotGrid');
 
   try {
-    state.availabilityLoaded = false;
-    updateNextAvailableButton();
-    if (statusEl) statusEl.textContent = 'Loading slots…';
     const response = await fetch(templateConfig.booking.availabilityEndpoint);
     const data = await parseJsonResponse(
       response,
@@ -453,17 +402,12 @@ const loadAvailability = async () => {
     state.timeSlots = Array.isArray(data.timeSlots) && data.timeSlots.length
       ? data.timeSlots
       : bookingRules.buildTimeSlots(templateConfig.booking);
-    state.availabilityLoaded = true;
 
     renderTimeSlots();
-    if (statusEl) statusEl.textContent = '';
   } catch (error) {
-    state.availabilityLoaded = false;
-    if (statusEl) statusEl.textContent = 'Availability unavailable';
     if (slotGrid) {
       slotGrid.innerHTML = `<p class="time-slot-empty">${error.message || 'Unable to load booking availability right now.'}</p>`;
     }
-    updateNextAvailableButton();
   }
 };
 
@@ -471,7 +415,6 @@ const initBookingForm = () => {
   const form = document.getElementById('bookingForm');
   const serviceSelect = document.getElementById('bookingService');
   const dateInput = getDateInput();
-  const nextAvailableBtn = document.getElementById('nextAvailableBtn');
 
   if (serviceSelect) {
     serviceSelect.addEventListener('change', (event) => {
@@ -515,32 +458,6 @@ const initBookingForm = () => {
       }
 
       renderTimeSlots();
-    });
-  }
-
-  if (nextAvailableBtn) {
-    nextAvailableBtn.addEventListener('click', () => {
-      if (!state.selectedService) {
-        setAlert('bookingError', 'Choose a service before looking for the next available appointment.');
-        return;
-      }
-
-      const nextAvailableDate = findNextAvailableDate();
-      if (!nextAvailableDate) {
-        setAlert('bookingError', 'No online weekday slots are currently available. Please call the garage directly.');
-        return;
-      }
-
-      state.selectedDate = nextAvailableDate;
-      state.selectedTime = '';
-      clearAlerts();
-
-      if (dateInput) {
-        dateInput.value = nextAvailableDate;
-      }
-
-      renderTimeSlots();
-      scrollToElement(document.getElementById('timeSlotGrid'));
     });
   }
 
