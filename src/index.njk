@@ -3,6 +3,7 @@ layout: layouts/base.njk
 title: Home
 description: Friendly servicing, diagnostics, repairs and MOT in Southampton.
 bodyClass: page-home
+useBookingScripts: true
 ---
 <section class="page-hero">
   <div class="hero-media">
@@ -15,7 +16,7 @@ bodyClass: page-home
       <p class="hero-lead">No jargon. No pressure. Just honest, reliable vehicle care from a local garage people feel comfortable coming back to.</p>
       <div class="hero-actions">
         <a class="btn btn-brand btn-lg" href="tel:{{ site.contactPhoneHref or site.contactPhone }}">Call {{ site.contactPhone }}</a>
-        <a class="btn btn-outline-brand btn-lg" href="/services/">View services</a>
+        <a class="btn btn-outline-brand btn-lg" href="#book-appointment">Book a service</a>
       </div>
       <dl class="hero-metrics">
         <div>
@@ -40,6 +41,172 @@ bodyClass: page-home
         <li>Clear advice without the pressure</li>
         <li>Trusted local garage support</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section-block booking-section booking-section-priority" id="book-appointment">
+  <div class="container">
+    <div class="booking-shell surface-card">
+      <div class="section-heading section-heading-left booking-heading">
+        <span class="section-kicker">Book now</span>
+        <h2>Choose your service, date, and time.</h2>
+        <p id="bookingIntro">{{ site.copy.bookingIntro }}</p>
+      </div>
+
+      <div class="alert alert-success d-none" id="appointmentSuccess" role="alert"></div>
+      <div class="alert alert-danger d-none" id="bookingError" role="alert"></div>
+
+      <div class="booking-progress" aria-label="Booking progress">
+        <div class="booking-progress-step is-current" id="bookingStepService">
+          <span class="booking-progress-index">1</span>
+          <div>
+            <strong>Service and date</strong>
+            <small>Start with the vehicle booking basics.</small>
+          </div>
+        </div>
+        <div class="booking-progress-step" id="bookingStepTime">
+          <span class="booking-progress-index">2</span>
+          <div>
+            <strong>Choose a time</strong>
+            <small>Pick from live weekday availability.</small>
+          </div>
+        </div>
+        <div class="booking-progress-step" id="bookingStepDetails">
+          <span class="booking-progress-index">3</span>
+          <div>
+            <strong>Add your details</strong>
+            <small>Share contact details to confirm the booking.</small>
+          </div>
+        </div>
+      </div>
+
+      <div class="appointment-layout">
+        <section class="appointment-selection surface-card">
+          <div class="booking-card-head booking-card-head-stack">
+            <div>
+              <p class="eyebrow-label">Step 1</p>
+              <h3 class="appointment-panel-title">Pick your service and date</h3>
+              <p class="helper-copy">Choose what the vehicle needs, then pick a weekday appointment.</p>
+            </div>
+            <span class="appointment-panel-badge">Weekdays only</span>
+          </div>
+
+          <div class="appointment-selection-group">
+            <div class="form-group">
+              <label for="bookingService">Select service</label>
+              <select id="bookingService" name="service" class="form-control form-select">
+                <option value="">Choose a service</option>
+                {% for service in site.booking.serviceOptions %}
+                <option value="{{ service }}">{{ service }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="appointment-date-panel appointment-date-trigger" id="bookingDatePanel">
+              <label for="bookingDate">Select date</label>
+              <input id="bookingDate" name="date" type="date" class="form-control">
+              <div class="form-note" id="calendarHelper">{{ site.copy.calendarHelper }}</div>
+            </div>
+          </div>
+
+          <div class="appointment-selected">
+            <div>
+              <span>Selected day</span>
+              <strong id="selectedDateLabel">Choose a weekday</strong>
+            </div>
+            <div>
+              <span>Available slots</span>
+              <strong id="availableSlotCount">Select a date</strong>
+            </div>
+          </div>
+
+          <ul class="appointment-meta-list">
+            <li>Monday to Friday appointments only</li>
+            <li>30 minute slot spacing during opening hours</li>
+            <li>If nothing fits, call the garage directly</li>
+          </ul>
+        </section>
+
+        <section class="appointment-slots surface-card">
+          <div class="booking-card-head">
+            <div>
+              <p class="eyebrow-label">Step 2</p>
+              <h3 class="appointment-panel-title">Choose a time</h3>
+              <p class="helper-copy" id="guestPricingSummary">{{ site.copy.guestPricingSummary }}</p>
+            </div>
+            <div class="appointment-slots-meta">
+              <button class="btn btn-outline-brand booking-shortcut-btn" type="button" id="nextAvailableBtn" disabled>Next available</button>
+              <div class="calendar-status" id="calendarStatus"></div>
+            </div>
+          </div>
+
+          <div class="time-slot-grid" id="timeSlotGrid"></div>
+          <p class="helper-copy" id="bookingPolicySummary">{{ site.copy.bookingPolicySummary }}</p>
+        </section>
+      </div>
+
+      <section class="surface-card booking-card booking-details-card is-locked" id="bookingDetailsCard" aria-disabled="true">
+        <div class="booking-card-head booking-card-head-stack">
+          <div>
+            <p class="eyebrow-label">Step 3</p>
+            <h3 class="appointment-panel-title">Add your details</h3>
+            <p class="helper-copy" id="bookingDetailsIntro">Select a time slot above to unlock the contact form.</p>
+          </div>
+          <span class="appointment-panel-badge appointment-panel-badge-muted" id="bookingDetailsBadge">Waiting for a time</span>
+        </div>
+
+        <form id="bookingForm" class="booking-form">
+          <input id="selectedTime" name="time" type="hidden">
+
+          <p class="booking-form-lock" id="bookingFormLock">Choose a service, date, and time before entering your details.</p>
+
+          <div class="detail-grid">
+            <div class="form-group">
+              <label for="fullName">Full name</label>
+              <input id="fullName" name="name" type="text" class="form-control" autocomplete="name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" class="form-control" autocomplete="tel" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email (optional)</label>
+              <input id="email" name="email" type="email" class="form-control" autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="vehicle">Vehicle registration or model</label>
+              <input id="vehicle" name="vehicle" type="text" class="form-control" placeholder="Optional">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" class="form-control" rows="4" placeholder="Tell the garage about warning lights, symptoms, or anything useful to know."></textarea>
+          </div>
+
+          <div class="price-box appointment-summary-box">
+            <div>
+              <span>Service</span>
+              <strong id="selectedServiceSummary">Not selected</strong>
+            </div>
+            <div>
+              <span>Date</span>
+              <strong id="selectedDateSummary">Not selected</strong>
+            </div>
+            <div>
+              <span>Time</span>
+              <strong id="selectedTimeSummary">Not selected</strong>
+            </div>
+            <p>Email is optional, but if you add it we will send a confirmation after booking.</p>
+          </div>
+
+          <button class="btn btn-brand btn-lg w-100" type="submit" id="bookingSubmit" disabled>Confirm booking</button>
+        </form>
+      </section>
     </div>
   </div>
 </section>

@@ -1,13 +1,171 @@
+.booking-section-priority {
+  margin-top: -3rem;
+  position: relative;
+  z-index: 5;
+}
+
 .booking-shell {
-  padding: 2.25rem;
+  padding: 2rem;
   border-radius: 2rem;
-  background: rgba(255, 250, 242, 0.55);
-  border: 1px solid rgba(23, 32, 27, 0.08);
+  background: rgba(255, 250, 244, 0.92);
+  border: 1px solid rgba(18, 59, 104, 0.1);
   box-shadow: var(--shadow-soft);
 }
 
+.booking-heading {
+  max-width: 46rem;
+}
+
+.booking-progress {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.booking-progress-step {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 1.05rem;
+  border-radius: 1.2rem;
+  border: 1px solid rgba(18, 59, 104, 0.1);
+  background: rgba(255, 255, 255, 0.68);
+  color: var(--color-muted);
+}
+
+.booking-progress-step strong,
+.booking-progress-step small {
+  display: block;
+}
+
+.booking-progress-step strong {
+  color: var(--color-navy-deep);
+  font-size: 0.98rem;
+}
+
+.booking-progress-step small {
+  margin-top: 0.2rem;
+  font-size: 0.82rem;
+}
+
+.booking-progress-step.is-current {
+  border-color: rgba(239, 106, 17, 0.3);
+  background: linear-gradient(180deg, rgba(255, 244, 235, 0.95), rgba(255, 255, 255, 0.9));
+  box-shadow: 0 14px 28px rgba(12, 38, 68, 0.08);
+}
+
+.booking-progress-step.is-complete {
+  border-color: rgba(18, 59, 104, 0.14);
+  background: linear-gradient(180deg, rgba(18, 59, 104, 0.07), rgba(255, 255, 255, 0.9));
+}
+
+.booking-progress-step.is-complete .booking-progress-index {
+  background: linear-gradient(135deg, rgba(18, 59, 104, 0.98), rgba(12, 38, 68, 0.92));
+}
+
+.booking-progress-index {
+  display: inline-flex;
+  width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(239, 106, 17, 0.98), rgba(200, 79, 0, 0.98));
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-crisp);
+}
+
+.appointment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.appointment-selection,
+.appointment-slots,
+.booking-details-card {
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(18, 59, 104, 0.1);
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow-soft);
+}
+
+.appointment-selection {
+  background:
+    linear-gradient(180deg, rgba(18, 59, 104, 0.05), rgba(255, 255, 255, 0.92)),
+    rgba(255, 255, 255, 0.92);
+}
+
+.appointment-selection,
+.appointment-slots,
+.booking-details-card,
 .booking-card {
   padding: 1.5rem;
+}
+
+.appointment-selection-group {
+  display: grid;
+  gap: 1rem;
+}
+
+.appointment-selected {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.1rem;
+}
+
+.appointment-selected div {
+  padding: 1rem 1rem 0.9rem;
+  border-radius: 1rem;
+  background: rgba(18, 59, 104, 0.05);
+  border: 1px solid rgba(18, 59, 104, 0.08);
+}
+
+.appointment-selected span {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-muted);
+}
+
+.appointment-selected strong {
+  display: block;
+  color: var(--color-navy-deep);
+}
+
+.appointment-meta-list {
+  margin: 1.1rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.appointment-meta-list li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--color-muted);
+  font-size: 0.94rem;
+}
+
+.appointment-meta-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(239, 106, 17, 0.95), rgba(200, 79, 0, 0.95));
+  box-shadow: 0 0 0 0.18rem rgba(239, 106, 17, 0.12);
 }
 
 .booking-card-head {
@@ -18,13 +176,64 @@
   margin-bottom: 1rem;
 }
 
+.booking-card-head-stack {
+  align-items: flex-start;
+}
+
+.appointment-panel-title {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-navy-deep);
+}
+
+.appointment-panel-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(239, 106, 17, 0.12);
+  border: 1px solid rgba(239, 106, 17, 0.2);
+  color: var(--color-accent-deep);
+  font-size: 0.82rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.appointment-panel-badge-muted {
+  background: rgba(18, 59, 104, 0.08);
+  border-color: rgba(18, 59, 104, 0.14);
+  color: var(--color-navy-deep);
+}
+
 .calendar-status {
   color: var(--color-muted);
   font-size: 0.92rem;
+  text-align: right;
+}
+
+.appointment-slots-meta {
+  display: grid;
+  justify-items: end;
+  gap: 0.55rem;
+}
+
+.booking-shortcut-btn {
+  min-width: 10.5rem;
+  padding-block: 0.68rem;
+}
+
+.booking-shortcut-btn:disabled {
+  opacity: 0.72;
 }
 
 .booking-form {
   display: grid;
+  gap: 1rem;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -34,11 +243,34 @@
   font-weight: 700;
 }
 
-.form-control {
-  min-height: 3.25rem;
-  border-radius: 1rem;
-  border-color: rgba(23, 32, 27, 0.14);
+.form-control,
+.form-select {
+  min-height: 3.35rem;
+  border-radius: 14px;
+  border-color: rgba(18, 59, 104, 0.14);
   padding-inline: 1rem;
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.appointment-date-panel {
+  padding: 1.1rem;
+  border-radius: 1.2rem;
+  background: linear-gradient(180deg, rgba(18, 59, 104, 0.06), rgba(255, 255, 255, 0.92));
+  border: 1px solid rgba(18, 59, 104, 0.1);
+}
+
+.appointment-date-trigger {
+  cursor: pointer;
+}
+
+.appointment-date-panel.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.appointment-date-panel .form-control {
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 textarea.form-control {
@@ -46,87 +278,123 @@ textarea.form-control {
   padding-block: 0.85rem;
 }
 
-.price-box {
+.time-slot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.time-slot-button {
+  min-height: 3.35rem;
+  border: 1px solid rgba(18, 59, 104, 0.12);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-navy-deep);
+  font-weight: 700;
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.time-slot-button:hover,
+.time-slot-button:focus {
+  transform: translateY(-1px);
+  border-color: rgba(239, 106, 17, 0.5);
+  box-shadow: 0 10px 18px rgba(12, 38, 68, 0.08);
+}
+
+.time-slot-button.is-selected {
+  border-color: rgba(239, 106, 17, 0.72);
+  background: linear-gradient(135deg, rgba(239, 106, 17, 0.98), rgba(200, 79, 0, 0.98));
+  color: white;
+  box-shadow: var(--shadow-crisp);
+}
+
+.time-slot-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(18, 59, 104, 0.05);
+  color: var(--color-muted);
+}
+
+.appointment-summary-box {
   display: grid;
   gap: 0.8rem;
   padding: 1.2rem;
   border-radius: 1.4rem;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.48));
-  border: 1px solid rgba(23, 32, 27, 0.08);
+  background: linear-gradient(180deg, rgba(18, 59, 104, 0.06), rgba(255, 255, 255, 0.7));
+  border: 1px solid rgba(18, 59, 104, 0.08);
 }
 
-.price-box > div {
+.appointment-summary-box > div {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.price-box strong {
-  font-size: 1.15rem;
+.appointment-summary-box strong {
+  font-size: 1rem;
+  color: var(--color-navy-deep);
 }
 
-.price-box p {
+.appointment-summary-box p {
   color: var(--color-muted);
   margin: 0.35rem 0 0;
   font-size: 0.92rem;
 }
 
-.guest-highlight {
-  border-color: rgba(183, 130, 45, 0.75);
-  box-shadow: 0 0 0 0.2rem rgba(183, 130, 45, 0.16);
+.booking-details-card {
+  margin-top: 1.25rem;
+  transition: opacity 160ms ease, transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
 }
 
-#paymentStatus {
-  position: fixed;
-  inset: 1rem 1rem auto;
-  z-index: 1080;
-  max-width: 28rem;
-  margin-inline: auto;
+.booking-details-card.is-locked {
+  opacity: 0.78;
+  border-style: dashed;
 }
 
-.calendar .fc {
-  --fc-border-color: rgba(23, 32, 27, 0.08);
-  --fc-page-bg-color: transparent;
-  --fc-neutral-bg-color: rgba(255, 255, 255, 0.62);
-  --fc-today-bg-color: rgba(183, 130, 45, 0.08);
-}
-
-.calendar .fc-toolbar-title {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 2rem;
-}
-
-.calendar .fc-button {
-  border-radius: 999px;
-  background: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-.calendar .fc-daygrid-day-frame {
-  min-height: 6rem;
-}
-
-.calendar .fc-daygrid-day.is-booked {
-  opacity: 0.42;
-}
-
-.calendar .fc-daygrid-day.is-selected .fc-daygrid-day-frame {
-  background: rgba(47, 111, 78, 0.14);
-  outline: 2px solid rgba(47, 111, 78, 0.48);
-  outline-offset: -3px;
-}
-
-.calendar .fc-bg-event {
-  background: rgba(23, 32, 27, 0.12);
+.booking-form-lock {
+  margin: 0;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  border: 1px dashed rgba(18, 59, 104, 0.18);
+  background: rgba(18, 59, 104, 0.04);
+  color: var(--color-muted);
+  font-size: 0.94rem;
 }
 
 @media (max-width: 991px) {
+  .booking-section-priority {
+    margin-top: -1.25rem;
+  }
+
   .booking-shell {
     padding: 1.25rem;
   }
 
-  .calendar .fc-toolbar {
-    gap: 0.75rem;
-    align-items: start;
+  .appointment-layout,
+  .booking-progress,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .appointment-selected {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-card-head {
+    flex-direction: column;
+  }
+
+  .calendar-status {
+    text-align: left;
+  }
+
+  .appointment-slots-meta {
+    justify-items: stretch;
+  }
+
+  .time-slot-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
