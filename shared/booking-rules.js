@@ -9,6 +9,7 @@
   const DEFAULT_LOCALE = 'en-GB';
   const DEFAULT_CURRENCY = 'GBP';
   const MS_PER_DAY = 24 * 60 * 60 * 1000;
+  const MS_PER_MINUTE = 60 * 1000;
 
   const toNumber = (value, fallback = 0) => {
     const parsed = Number(value);
@@ -92,6 +93,83 @@
 
     date.setDate(date.getDate() + days);
     return toIsoDateString(date);
+  };
+
+  const normalizeTimeInput = (rawTime) => {
+    const timeStr = String(rawTime || '').trim();
+    if (!timeStr) return '';
+
+    const hhmm = timeStr.match(/^(\d{1,2}):(\d{2})$/);
+    if (hhmm) {
+      const hours = Number.parseInt(hhmm[1], 10);
+      const minutes = Number.parseInt(hhmm[2], 10);
+      if (hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59) {
+        return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+      }
+    }
+
+    const ampm = timeStr.match(/^(\d{1,2}):(\d{2})\s*([ap]m)$/i);
+    if (!ampm) return '';
+
+    let hours = Number.parseInt(ampm[1], 10);
+    const minutes = Number.parseInt(ampm[2], 10);
+    const meridiem = ampm[3].toLowerCase();
+    if (hours < 1 || hours > 12 || minutes < 0 || minutes > 59) return '';
+
+    if (meridiem === 'pm' && hours !== 12) hours += 12;
+    if (meridiem === 'am' && hours === 12) hours = 0;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+  };
+
+  const formatTimeLabel = (timeInput, locale = DEFAULT_LOCALE) => {
+    const normalizedTime = normalizeTimeInput(timeInput);
+    if (!normalizedTime) return '';
+
+    const [hours, minutes] = normalizedTime.split(':').map((value) => Number.parseInt(value, 10));
+    const date = new Date(2000, 0, 1, hours, minutes, 0, 0);
+    return new Intl.DateTimeFormat(locale, {
+      hour: 'numeric',
+      minute: '2-digit'
+    }).format(date);
+  };
+
+  const isBusinessDay = (dateInput, businessDays = [1, 2, 3, 4, 5]) => {
+    const date = toDate(dateInput);
+    if (!date) return false;
+
+    const allowedDays = Array.isArray(businessDays)
+      ? businessDays.map((value) => Number.parseInt(String(value), 10)).filter(Number.isInteger)
+      : [1, 2, 3, 4, 5];
+
+    return allowedDays.includes(date.getDay());
+  };
+
+  const compareTimes = (left, right) => {
+    const leftNormalized = normalizeTimeInput(left);
+    const rightNormalized = normalizeTimeInput(right);
+    if (!leftNormalized || !rightNormalized) return 0;
+    return leftNormalized.localeCompare(rightNormalized);
+  };
+
+  const buildTimeSlots = (bookingConfig = {}) => {
+    const start = normalizeTimeInput(bookingConfig.firstSlot);
+    const end = normalizeTimeInput(bookingConfig.lastSlot);
+    const slotIntervalMinutes = toNumber(bookingConfig.slotIntervalMinutes, 30);
+    if (!start || !end || slotIntervalMinutes < 1) return [];
+
+    const [startHour, startMinute] = start.split(':').map((value) => Number.parseInt(value, 10));
+    const [endHour, endMinute] = end.split(':').map((value) => Number.parseInt(value, 10));
+    const startDate = new Date(2000, 0, 1, startHour, startMinute, 0, 0);
+    const endDate = new Date(2000, 0, 1, endHour, endMinute, 0, 0);
+    if (endDate < startDate) return [];
+
+    const slots = [];
+    for (let cursor = startDate.getTime(); cursor <= endDate.getTime(); cursor += slotIntervalMinutes * MS_PER_MINUTE) {
+      const date = new Date(cursor);
+      slots.push(`${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`);
+    }
+
+    return slots;
   };
 
   const getDepositAmount = (eventDate, bookingConfig = {}) => {
@@ -237,16 +315,21 @@
 
   return {
     addDays,
+    buildTimeSlots,
     buildBookingPolicyText,
     buildGuestPricingText,
     calculateEstimatedTotal,
     calculatePaymentSchedule,
+    compareTimes,
     formatCurrency,
     formatCurrencyFromMinorUnits,
     formatDate,
     formatDisplayDate,
+    formatTimeLabel,
     getDepositAmount,
+    isBusinessDay,
     normalizeDateInput,
+    normalizeTimeInput,
     toIsoDateString
   };
 }));

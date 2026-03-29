@@ -8,6 +8,8 @@ const normalizeHeader = (value) => (
     .replace(/^_+|_+$/g, '')
 );
 
+const normalizeStatus = (status) => String(status || '').trim().toLowerCase();
+
 const mapSheetRows = (rows) => {
   if (!Array.isArray(rows) || !rows.length) return [];
 
@@ -20,7 +22,24 @@ const mapSheetRows = (rows) => {
   }, {}));
 };
 
-const isBookedStatus = (status) => String(status || 'booked').trim().toLowerCase() === 'booked';
+const isUnavailableStatus = (status, blockedStatuses = ['booked', 'confirmed', 'blocked', 'pending']) => {
+  const normalizedStatus = normalizeStatus(status || 'confirmed');
+  return blockedStatuses.includes(normalizedStatus);
+};
+
+const getUnavailableSlotsByDate = (rows, date, blockedStatuses) => {
+  const targetDate = bookingRules.normalizeDateInput(date);
+  if (!targetDate) return new Set();
+
+  return mapSheetRows(rows).reduce((slots, row) => {
+    if (!isUnavailableStatus(row.status, blockedStatuses)) return slots;
+    if (bookingRules.normalizeDateInput(row.date) !== targetDate) return slots;
+
+    const normalizedTime = bookingRules.normalizeTimeInput(row.time);
+    if (normalizedTime) slots.add(normalizedTime);
+    return slots;
+  }, new Set());
+};
 
 const isDateBooked = (rows, date) => {
   const targetDate = bookingRules.normalizeDateInput(date);
@@ -28,7 +47,19 @@ const isDateBooked = (rows, date) => {
 
   return mapSheetRows(rows).some((row) => (
     bookingRules.normalizeDateInput(row.date) === targetDate &&
-    isBookedStatus(row.status)
+    isUnavailableStatus(row.status)
+  ));
+};
+
+const isTimeSlotTaken = (rows, { date, time, blockedStatuses } = {}) => {
+  const normalizedDate = bookingRules.normalizeDateInput(date);
+  const normalizedTime = bookingRules.normalizeTimeInput(time);
+  if (!normalizedDate || !normalizedTime) return false;
+
+  return mapSheetRows(rows).some((row) => (
+    bookingRules.normalizeDateInput(row.date) === normalizedDate &&
+    bookingRules.normalizeTimeInput(row.time) === normalizedTime &&
+    isUnavailableStatus(row.status, blockedStatuses)
   ));
 };
 
@@ -41,7 +72,9 @@ const hasStripeSessionRecorded = (rows, stripeSessionId) => {
 };
 
 module.exports = {
+  getUnavailableSlotsByDate,
   hasStripeSessionRecorded,
   isDateBooked,
+  isTimeSlotTaken,
   mapSheetRows
 };

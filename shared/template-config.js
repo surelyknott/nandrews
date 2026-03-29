@@ -37,22 +37,22 @@
   },
   booking: {
     availabilityEndpoint: '/.netlify/functions/availability',
-    checkoutEndpoint: '/.netlify/functions/create-checkout',
-    baseGuestCount: 135,
-    minimumSpend: 4000,
-    pricePerAdditionalGuest: 30,
-    depositEnabled: true,
-    depositAmount: 2000,
-    depositOverridesByYear: {
-      2027: 1500
-    },
-    balanceDueDaysBeforeEvent: 90,
-    fullPaymentThresholdDays: 90
+    submitEndpoint: '/.netlify/functions/submit-appointment',
+    serviceOptions: [
+      'MOT testing',
+      'Servicing & repairs',
+      'Diagnostics',
+    ],
+    businessDays: [1, 2, 3, 4, 5],
+    firstSlot: '08:30',
+    lastSlot: '16:00',
+    slotIntervalMinutes: 30,
+    blockedStatuses: ['booked', 'confirmed', 'blocked', 'pending']
   },
   copy: {
-    bookingIntro: 'Call, message, or send an appointment request and the team will come back to you.',
-    calendarHelper: 'Online booking is not live yet.',
-    guestPricingSummary: 'Clear advice and practical next steps.',
-    bookingPolicySummary: 'For servicing, diagnostics, repairs and MOT enquiries, call the garage or send a message through the contact page.'
+    bookingIntro: 'Book a weekday appointment online by selecting the service, date, and time that works for you.',
+    calendarHelper: 'Saturday and Sunday slots are not available online.',
+    guestPricingSummary: 'Choose a service first, then pick an available date and time.',
+    bookingPolicySummary: 'Online bookings are available Monday to Friday during garage opening hours. If you leave an email address, a confirmation email will be sent after booking.'
   }
 })));
