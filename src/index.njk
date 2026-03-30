@@ -52,14 +52,14 @@ useBookingScripts: true
             <small>Start with the vehicle booking basics.</small>
           </div>
         </div>
-        <div class="booking-progress-step" id="bookingStepTime">
+        <div class="booking-progress-step is-current" id="bookingStepTime">
           <span class="booking-progress-index">2</span>
           <div>
             <strong>Choose a time</strong>
             <small>Pick from live weekday availability.</small>
           </div>
         </div>
-        <div class="booking-progress-step" id="bookingStepDetails">
+        <div class="booking-progress-step is-current" id="bookingStepDetails">
           <span class="booking-progress-index">3</span>
           <div>
             <strong>Add your details</strong>
@@ -194,27 +194,37 @@ useBookingScripts: true
       <h2>Serving the Southampton area since 1965.</h2>
     </div>
 
-    <div class="process-grid">
-      <article class="process-card">
-        <span>01</span>
-        <h3>Honest advice</h3>
-        <p>The aim is to explain what needs doing clearly, without making customers feel pressured or talked down to.</p>
-      </article>
-      <article class="process-card">
-        <span>02</span>
-        <h3>Skilled diagnostics</h3>
-        <p>From warning lights to sensor issues and harder-to-find faults, the team works methodically to get to the root of the problem.</p>
-      </article>
-      <article class="process-card">
-        <span>03</span>
-        <h3>Fair local service</h3>
-        <p>Nandrews is positioned as the kind of local garage people recommend because the work is solid and the service feels straightforward.</p>
+    <div class="heritage-panel">
+      <article class="heritage-copy">
+        <span class="heritage-kicker">Did you know?</span>
+        <h3>Long before diagnostics screens and online bookings, this side of Southampton already relied on trusted local garages.</h3>
+        <p>Nandrews has been part of that picture since 1965, serving drivers around Shirley and the wider Southampton area through decades of change on the road.</p>
+        <figure class="heritage-photo">
+          <div class="heritage-photo-frame">
+            <img src="/assets/images/nandrews-1965-640px.webp" alt="Historical photograph of Nandrews from 1965">
+          </div>
+          <figcaption>Early Nandrews frontage, photographed in 1965.</figcaption>
+        </figure>
+        <ul class="heritage-facts list-clean">
+          <li>
+            <strong>1965 was a different motoring era.</strong>
+            Cars were simpler, tools were more hands-on, and local garages were where people went for straightforward advice they could trust.
+          </li>
+          <li>
+            <strong>Shirley has long been one of Southampton&apos;s everyday thoroughfares.</strong>
+            With homes, shops and city-bound traffic moving through the area, a dependable local garage was part of daily life.
+          </li>
+          <li>
+            <strong>The city around it kept moving.</strong>
+            Southampton in the mid-1960s was still shaped by working docks, local trade and post-war change, with independent businesses at the centre of it.
+          </li>
+        </ul>
       </article>
     </div>
   </div>
 </section>
 
-<section class="section-block section-block-alt">
+<section class="section-block">
   <div class="container">
     <div class="cta-panel">
       <div>
@@ -230,11 +240,11 @@ useBookingScripts: true
 <section class="section-block">
   <div class="container split-grid">
     <article class="surface-card copy-card">
-      <span class="section-kicker">Find us</span>
-      <h2>{{ site.addressLines[0] }}</h2>
+      <span class="section-kicker">Address</span>
+      <p>{{ site.addressLines[0] }}</p>
       <p>{{ site.addressLines[1] }}</p>
-      <p>{{ site.serviceArea }}</p>
-      <a class="btn btn-outline-brand" href="tel:{{ site.contactPhoneHref or site.contactPhone }}">Call {{ site.contactPhone }}</a>
+      <p>{{ site.addressLines[2] }}</p>
+      <p>{{ site.addressLines[3] }}</p>
     </article>
 
     <article class="surface-card copy-card">

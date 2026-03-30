@@ -107,7 +107,7 @@ const setStepState = (elementId, { isCurrent = false, isComplete = false } = {})
   const element = document.getElementById(elementId);
   if (!element) return;
 
-  element.classList.toggle('is-current', isCurrent);
+  element.classList.add('is-current');
   element.classList.toggle('is-complete', isComplete);
 
   if (isCurrent) {

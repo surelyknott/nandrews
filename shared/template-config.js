@@ -22,7 +22,9 @@
     faviconPath: '/assets/images/nandrews-logo.png',
     addressLines: [
       '275 Shirley Rd',
-      'Southampton SO15 3HT'
+      'Southampton', 
+      'SO15 3HT',
+      'United Kingdom'
     ],
     openingHours: [
       { day: 'Monday', hours: '8:30am-4:30pm' },

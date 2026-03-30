@@ -2,11 +2,9 @@
   <div class="container footer-grid">
     <div>
       <p class="footer-title">{{ site.businessName }}</p>
-      <p class="footer-copy">{{ site.tagline }}</p>
       {% for line in site.addressLines %}
       <p class="footer-copy">{{ line }}</p>
       {% endfor %}
-      <p class="footer-copy">{{ site.serviceArea }}</p>
     </div>
 
     <div>
@@ -19,13 +17,12 @@
     </div>
 
     <div>
-      <p class="footer-title">Contact</p>
+      <p class="footer-title">Phone</p>
       <ul class="footer-links">
         {% if site.contactEmail %}
         <li><a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a></li>
         {% endif %}
         <li><a href="tel:{{ site.contactPhoneHref or site.contactPhone }}">{{ site.contactPhone }}</a></li>
-        <li>{{ site.openingHours[0].hours }} Mon-Fri</li>
       </ul>
       <div class="footer-socials">
         {% for social in site.socials %}
@@ -35,6 +32,6 @@
     </div>
   </div>
   <div class="container footer-bottom">
-    <span>© <span id="y"></span> {{ site.businessName }}</span>
+    <span>© <span id="y"></span> {{ site.businessName }}. Website by SurelyKnott</span>
   </div>
 </footer>
