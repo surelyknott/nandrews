@@ -50,7 +50,7 @@ const fetchSheetRows = async (accessToken) => {
 
 const appendSheetRow = async (accessToken, row) => {
   const { sheetId, sheetTab } = getSheetConfig();
-  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(sheetTab)}!A1:append?valueInputOption=USER_ENTERED`;
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(sheetTab)}!A1:append?valueInputOption=RAW`;
   const response = await fetch(url, {
     method: 'POST',
     headers: {
