@@ -64,7 +64,7 @@ h4 {
 }
 
 .section-block {
-  padding: 5rem 0;
+  padding: 2.5rem 0;
 }
 
 .section-block-alt {
@@ -74,9 +74,7 @@ h4 {
 }
 
 .section-heading {
-  max-width: 720px;
   margin: 0 auto 2rem;
-  text-align: center;
 }
 
 .section-heading-left {
@@ -162,6 +160,6 @@ h4 {
 
 @media (max-width: 991px) {
   .section-block {
-    padding: 4rem 0;
+    padding: 1.5rem 0;
   }
 }
