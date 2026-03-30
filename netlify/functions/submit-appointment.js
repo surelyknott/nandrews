@@ -106,6 +106,9 @@ exports.handler = async (event) => {
   const vehicle = String(payload.vehicle || '').trim();
   const notes = String(payload.notes || '').trim();
   const availableSlots = bookingRules.buildTimeSlots(templateConfig.booking);
+  const sheetDate = bookingRules.formatDisplayDate(date, {
+    locale: templateConfig.site.locale
+  });
 
   if (!service || !date || !time || !name || !phone) {
     return {
@@ -160,7 +163,7 @@ exports.handler = async (event) => {
     }
 
     await appendSheetRow(accessToken, [
-      date,
+      sheetDate,
       time,
       service,
       name,
