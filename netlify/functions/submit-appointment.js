@@ -30,6 +30,15 @@ const isAllowedService = (service) => (
   (templateConfig.booking.serviceOptions || []).includes(normalizeService(service))
 );
 
+const formatCreatedAt = (date = new Date()) => {
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  return `${day}-${month}-${year}T${hours}:${minutes}`;
+};
+
 const buildConfirmationHtml = ({ service, date, time, name, phone, vehicle, notes }) => {
   const lines = [
     `<p>Hi ${name},</p>`,
@@ -172,7 +181,7 @@ exports.handler = async (event) => {
       vehicle,
       notes,
       'confirmed',
-      new Date().toISOString()
+      formatCreatedAt()
     ]);
 
     let emailSent = false;
