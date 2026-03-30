@@ -44,9 +44,6 @@ useBookingScripts: true
         <p id="bookingIntro">{{ site.copy.bookingIntro }}</p>
       </div>
 
-      <div class="alert alert-success d-none" id="appointmentSuccess" role="alert"></div>
-      <div class="alert alert-danger d-none" id="bookingError" role="alert"></div>
-
       <div class="booking-progress" aria-label="Booking progress">
         <div class="booking-progress-step is-current" id="bookingStepService">
           <span class="booking-progress-index">1</span>
@@ -183,6 +180,8 @@ useBookingScripts: true
           </div>
 
           <button class="btn btn-brand btn-lg w-100" type="submit" id="bookingSubmit" disabled>Confirm booking</button>
+          <div class="alert alert-success d-none" id="appointmentSuccess" role="alert"></div>
+          <div class="alert alert-danger d-none" id="bookingError" role="alert"></div>
         </form>
       </section>
     </div>
