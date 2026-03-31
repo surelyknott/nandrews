@@ -14,7 +14,7 @@
     contactPhone: '023 8077 1777',
     contactPhoneHref: '+442380771777',
     contactEmail: '',
-    tagline: 'Friendly servicing, diagnostics, repairs and MOT for all model vehicles.',
+    tagline: 'Friendly servicing, diagnostics, repairs and MOT for all vehicle models.',
     serviceArea: 'Based in Shirley, Southampton and serving local drivers across the area.',
     analyticsId: '',
     siteUrl: '',
