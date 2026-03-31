@@ -110,7 +110,7 @@ h4 {
 .btn-brand,
 .btn-outline-brand {
   border-radius: 16px;
-  padding: 0.88rem 1.35rem;
+  // padding: 0.88rem 1.35rem;
   font-weight: 800;
   letter-spacing: 0;
 }
@@ -159,5 +159,13 @@ h4 {
 @media (max-width: 991px) {
   .section-block {
     padding: 1.5rem 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-title {
+      font-size: clamp(1.8rem, 5vw, 4.6rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
   }
 }
