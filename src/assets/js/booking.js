@@ -13,14 +13,6 @@ const state = {
   selectedTime: ''
 };
 
-const normalizeStatus = (status) => String(status || '').trim().toLowerCase();
-
-const getTakenStatuses = () => (
-  Array.isArray(templateConfig.booking.blockedStatuses)
-    ? templateConfig.booking.blockedStatuses.map((status) => normalizeStatus(status))
-    : ['booked', 'confirmed', 'blocked', 'pending']
-);
-
 const setAlert = (elementId, message) => {
   const alertEl = document.getElementById(elementId);
   if (!alertEl) return;
@@ -183,22 +175,6 @@ const initDatePickerTrigger = () => {
   });
 };
 
-const getSelectedRowsForDate = (date) => (
-  state.rows.filter((row) => (
-    bookingRules.normalizeDateInput(row.date) === bookingRules.normalizeDateInput(date)
-  ))
-);
-
-const getUnavailableSlotsForDate = (date) => {
-  const statuses = getTakenStatuses();
-  return getSelectedRowsForDate(date).reduce((slots, row) => {
-    if (!statuses.includes(normalizeStatus(row.status || 'confirmed'))) return slots;
-    const normalizedTime = bookingRules.normalizeTimeInput(row.time);
-    if (normalizedTime) slots.add(normalizedTime);
-    return slots;
-  }, new Set());
-};
-
 const isPastSlotToday = (date, time) => {
   const normalizedDate = bookingRules.normalizeDateInput(date);
   const normalizedTime = bookingRules.normalizeTimeInput(time);
@@ -216,9 +192,8 @@ const isPastSlotToday = (date, time) => {
 const getAvailableSlotsForDate = (date) => {
   if (!bookingRules.isBusinessDay(date, templateConfig.booking.businessDays)) return [];
 
-  const takenSlots = getUnavailableSlotsForDate(date);
   return state.timeSlots.filter((time) => (
-    !takenSlots.has(time) && !isPastSlotToday(date, time)
+    !isPastSlotToday(date, time)
   ));
 };
 
@@ -231,7 +206,6 @@ const updateSummary = () => {
   const serviceSummary = document.getElementById('selectedServiceSummary');
   const dateSummary = document.getElementById('selectedDateSummary');
   const timeSummary = document.getElementById('selectedTimeSummary');
-  const dateLabel = document.getElementById('selectedDateLabel');
   const hiddenTime = document.getElementById('selectedTime');
   const submitBtn = document.getElementById('bookingSubmit');
   const slotIntro = document.getElementById('guestPricingSummary');
@@ -250,14 +224,6 @@ const updateSummary = () => {
     timeSummary.textContent = state.selectedTime
       ? bookingRules.formatTimeLabel(state.selectedTime, templateConfig.site.locale)
       : 'Not selected';
-  }
-
-  if (dateLabel) {
-    dateLabel.textContent = state.selectedDate
-      ? formatDateLong(state.selectedDate)
-      : state.selectedService
-        ? 'Choose a weekday'
-        : 'Choose a service first';
   }
 
   if (hiddenTime) {

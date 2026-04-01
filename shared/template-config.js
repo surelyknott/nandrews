@@ -46,6 +46,7 @@
       'Diagnostics',
     ],
     businessDays: [1, 2, 3, 4, 5],
+    timeSlots: ['08:30', '13:30'],
     firstSlot: '08:30',
     lastSlot: '16:00',
     slotIntervalMinutes: 30,

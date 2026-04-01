@@ -113,34 +113,6 @@
   gap: 1rem;
 }
 
-.appointment-selected {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.9rem;
-  margin-top: 1.1rem;
-}
-
-.appointment-selected div {
-  padding: 1rem 1rem 0.9rem;
-  border-radius: 1rem;
-  background: rgba(18, 59, 104, 0.05);
-  border: 1px solid rgba(18, 59, 104, 0.08);
-}
-
-.appointment-selected span {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-muted);
-}
-
-.appointment-selected strong {
-  display: block;
-  color: var(--color-navy-deep);
-}
-
 .appointment-meta-list {
   margin: 1.1rem 0 0;
   padding: 0;
@@ -216,7 +188,8 @@
   gap: 1rem;
 }
 
-.form-group label {
+.form-group label,
+.appointment-date-panel label {
   display: block;
   margin-bottom: 0.45rem;
   font-weight: 700;
@@ -231,11 +204,26 @@
   background: rgba(255, 255, 255, 0.92);
 }
 
-.appointment-date-panel {
-  padding: 1.1rem;
-  border-radius: 1.2rem;
-  background: linear-gradient(180deg, rgba(18, 59, 104, 0.06), rgba(255, 255, 255, 0.92));
-  border: 1px solid rgba(18, 59, 104, 0.1);
+.booking-select-wrap {
+  position: relative;
+}
+
+.form-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 3rem;
+}
+
+.booking-select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  color: var(--color-navy-deep);
+  font-size: 1.25rem;
+  line-height: 1;
+  pointer-events: none;
 }
 
 .appointment-date-trigger {
@@ -350,10 +338,6 @@ textarea.form-control {
   .appointment-layout,
   .booking-progress,
   .detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .appointment-selected {
     grid-template-columns: 1fr;
   }
 

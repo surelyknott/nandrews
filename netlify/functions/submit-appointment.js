@@ -1,7 +1,6 @@
 const templateConfig = require('../../shared/template-config');
 const bookingRules = require('../../shared/booking-rules');
 const { appendSheetRow, fetchSheetRows, getAccessToken } = require('./_lib/google-sheets');
-const { isTimeSlotTaken } = require('./_lib/bookings');
 
 const SHEET_HEADER_ROW = [
   'date',
@@ -154,18 +153,6 @@ exports.handler = async (event) => {
   try {
     const accessToken = await getAccessToken();
     const rows = await fetchSheetRows(accessToken);
-
-    if (isTimeSlotTaken(rows, {
-      date,
-      time,
-      blockedStatuses: templateConfig.booking.blockedStatuses
-    })) {
-      return {
-        statusCode: 409,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ error: 'That time has already been booked. Please choose another slot.' })
-      };
-    }
 
     if (!rows.length) {
       await appendSheetRow(accessToken, SHEET_HEADER_ROW);

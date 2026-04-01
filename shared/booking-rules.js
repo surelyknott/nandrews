@@ -152,6 +152,13 @@
   };
 
   const buildTimeSlots = (bookingConfig = {}) => {
+    if (Array.isArray(bookingConfig.timeSlots) && bookingConfig.timeSlots.length) {
+      return bookingConfig.timeSlots
+        .map((slot) => normalizeTimeInput(slot))
+        .filter(Boolean)
+        .sort(compareTimes);
+    }
+
     const start = normalizeTimeInput(bookingConfig.firstSlot);
     const end = normalizeTimeInput(bookingConfig.lastSlot);
     const slotIntervalMinutes = toNumber(bookingConfig.slotIntervalMinutes, 30);

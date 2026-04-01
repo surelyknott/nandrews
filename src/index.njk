@@ -42,7 +42,6 @@ useBookingScripts: true
   <div class="container">
     <div class="booking-shell surface-card">
       <div class="section-heading section-heading-left booking-heading">
-        <span class="section-kicker">Book now</span>
         <h2>Choose your service, date, and time.</h2>
         <p id="bookingIntro">{{ site.copy.bookingIntro }}</p>
       </div>
@@ -84,24 +83,20 @@ useBookingScripts: true
           <div class="appointment-selection-group">
             <div class="form-group">
               <label for="bookingService">Select service</label>
-              <select id="bookingService" name="service" class="form-control form-select">
-                <option value="">Choose a service</option>
-                {% for service in site.booking.serviceOptions %}
-                <option value="{{ service }}">{{ service }}</option>
-                {% endfor %}
-              </select>
+              <div class="booking-select-wrap">
+                <select id="bookingService" name="service" class="form-control form-select">
+                  <option value="">Choose a service</option>
+                  {% for service in site.booking.serviceOptions %}
+                  <option value="{{ service }}">{{ service }}</option>
+                  {% endfor %}
+                </select>
+                <span class="booking-select-arrow" aria-hidden="true">▾</span>
+              </div>
             </div>
 
             <div class="appointment-date-panel appointment-date-trigger" id="bookingDatePanel">
               <label for="bookingDate">Select date</label>
               <input id="bookingDate" name="date" type="date" class="form-control">
-            </div>
-          </div>
-
-          <div class="appointment-selected">
-            <div>
-              <span>Selected day</span>
-              <strong id="selectedDateLabel">Choose a weekday</strong>
             </div>
           </div>
 
@@ -120,7 +115,6 @@ useBookingScripts: true
           </div>
 
           <div class="time-slot-grid" id="timeSlotGrid"></div>
-          <p class="helper-copy" id="bookingPolicySummary">{{ site.copy.bookingPolicySummary }}</p>
         </section>
       </div>
 
@@ -151,13 +145,13 @@ useBookingScripts: true
             </div>
 
             <div class="form-group">
-              <label for="email">Email (optional)</label>
-              <input id="email" name="email" type="email" class="form-control" autocomplete="email">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" class="form-control" autocomplete="email" required>
             </div>
 
             <div class="form-group">
               <label for="vehicle">Vehicle registration or model</label>
-              <input id="vehicle" name="vehicle" type="text" class="form-control" placeholder="Optional">
+              <input id="vehicle" name="vehicle" type="text" class="form-control" required>
             </div>
           </div>
 
