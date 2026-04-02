@@ -1,12 +1,17 @@
 module.exports = [
   {
-    title: 'MOT testing',
+    title: 'MOT',
     summary: 'Straightforward MOT support with practical advice before and after the test, so customers know exactly what needs attention.',
     image: '/assets/images/service-events.svg'
   },
   {
-    title: 'Servicing & repairs',
-    summary: 'Routine servicing and repair work for all model vehicles, with honest advice on what needs doing now and what can wait.',
+    title: 'Servicing',
+    summary: 'Routine servicing for all model vehicles, with honest advice on what needs doing now and what can wait.',
+    image: '/assets/images/service-private.svg'
+  },
+  {
+    title: 'Repairs',
+    summary: 'Professional repair work for all model vehicles, ensuring quality and reliability.',
     image: '/assets/images/service-private.svg'
   },
   {

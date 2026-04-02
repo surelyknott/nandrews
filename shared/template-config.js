@@ -41,8 +41,9 @@
     availabilityEndpoint: '/.netlify/functions/availability',
     submitEndpoint: '/.netlify/functions/submit-appointment',
     serviceOptions: [
-      'MOT testing',
-      'Servicing & repairs',
+      'MOT',
+      'Servicing',
+      'Repairs',
       'Diagnostics',
     ],
     businessDays: [1, 2, 3, 4, 5],
