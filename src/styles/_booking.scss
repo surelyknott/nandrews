@@ -349,3 +349,13 @@ textarea.form-control {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+@media (max-width: 599px) {
+  .booking-container-mobile {
+    padding: 0;
+  }
+
+  .booking-shell {
+    border-radius: 0;
+  }
+} 
