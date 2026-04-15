@@ -134,7 +134,23 @@
 
 .about-hero-image-past {
   z-index: 1;
-  animation: about-hero-fade 8s ease-in-out infinite;
+  animation: about-hero-fade 6s ease-in-out infinite alternate;
+}
+
+.about-hero-title {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 1.75rem 1.9rem;
+  background: linear-gradient(180deg, rgba(12, 38, 68, 0), rgba(12, 38, 68, 0.42));
+  z-index: 3;
+}
+
+.about-hero-title .page-title {
+  margin: 0;
+  color: white;
+  max-width: none;
 }
 
 .about-copy p + p {
@@ -142,11 +158,11 @@
 }
 
 @keyframes about-hero-fade {
-  0%, 40% {
+  0% {
     opacity: 1;
   }
 
-  55%, 100% {
+  100% {
     opacity: 0;
   }
 }
@@ -254,6 +270,10 @@
 
   .services-detail-shell {
     padding: 1.25rem;
+  }
+
+  .about-hero-title {
+    padding: 1.25rem 1.4rem;
   }
 }
 
