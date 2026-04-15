@@ -105,6 +105,11 @@
 
 .page-services .page-banner {
   padding-top: 2rem;
+  padding-bottom: 0;
+}
+
+.page-services .services-detail-section {
+  padding-bottom: 0;
 }
 
 .services-banner img {
@@ -129,6 +134,56 @@
   max-width: none;
 }
 
+.services-detail-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.services-detail-shell {
+  padding: 1.75rem;
+  background: rgba(255, 255, 255, 0.82);
+  box-shadow: var(--shadow-soft);
+}
+
+.services-cta-panel {
+  border-radius: 0;
+}
+
+.service-detail-row {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.service-detail-card {
+  align-self: start;
+}
+
+.service-detail-copy {
+  width: 100%;
+}
+
+.service-detail-copy h2 {
+  margin-bottom: 1rem;
+}
+
+.service-detail-copy p + p {
+  margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+  .page-services .service-detail-row {
+    grid-template-columns: minmax(260px, 320px) minmax(0, 720px);
+    justify-content: center;
+    align-items: start;
+    column-gap: 2rem;
+  }
+
+  .page-services .service-detail-card,
+  .page-services .service-detail-copy {
+    width: 100%;
+  }
+}
+
 @media (max-width: 991px) {
   .services-banner {
     min-height: 260px;
@@ -140,6 +195,10 @@
 
   .services-banner-title {
     padding: 1.25rem 1.4rem;
+  }
+
+  .services-detail-shell {
+    padding: 1.25rem;
   }
 }
 

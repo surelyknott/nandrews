@@ -15,51 +15,37 @@ bodyClass: page-standard page-services
   </div>
 </section>
 
+<section class="section-block services-detail-section">
+  <div class="container">
+    <div class="services-detail-shell">
+      <div class="services-detail-list">
+        {% for service in services %}
+        <article class="service-detail-row">
+          <div class="service-card service-detail-card">
+            <img src="{{ service.image }}" alt="{{ service.title }}">
+          </div>
+          <div class="service-detail-copy">
+            <h2>{{ service.title }}</h2>
+            {% for paragraph in service.details %}
+            <p>{{ paragraph }}</p>
+            {% endfor %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section-block">
   <div class="container">
-    <div class="service-grid">
-      {% for service in services %}
-      <article class="service-card">
-        <img src="{{ service.image }}" alt="{{ service.title }}">
-        <div class="service-card-body">
-          <h2>{{ service.title }}</h2>
-          <p>{{ service.summary }}</p>
-        </div>
-      </article>
-      {% endfor %}
+    <div class="cta-panel services-cta-panel">
+      <div>
+        <span class="section-kicker">Not sure what you need?</span>
+        <h2>Call the garage and explain what the vehicle is doing.</h2>
+        <p>If the issue is not obvious, that is exactly what diagnostics are for. The goal is to point people in the right direction quickly, not make them guess which service label fits best.</p>
+      </div>
+      <a class="btn btn-brand btn-lg" href="/contact/">Get in touch</a>
     </div>
-  </div>
-</section>
-
-<section class="section-block section-block-alt">
-  <div class="container split-grid">
-    <article class="surface-card copy-card">
-      <span class="section-kicker">What we help with</span>
-      <h2>Practical support for common garage needs.</h2>
-      <ul class="list-clean">
-        <li>MOT preparation and post-test repair advice.</li>
-        <li>Routine servicing to keep vehicles in good working order.</li>
-        <li>Diagnostic checks for warning lights and harder-to-trace faults.</li>
-        <li>Repair work ranging from straightforward fixes to more involved jobs.</li>
-      </ul>
-    </article>
-
-    <article class="surface-card gallery-strip">
-      <img src="/assets/images/detail-one.svg" alt="Sample service detail one">
-      <img src="/assets/images/detail-two.svg" alt="Sample service detail two">
-      <img src="/assets/images/detail-three.svg" alt="Sample service detail three">
-      <img src="/assets/images/detail-four.svg" alt="Sample service detail four">
-    </article>
-  </div>
-</section>
-
-<section class="section-block">
-  <div class="container cta-panel">
-    <div>
-      <span class="section-kicker">Not sure what you need?</span>
-      <h2>Call the garage and explain what the vehicle is doing.</h2>
-      <p>If the issue is not obvious, that is exactly what diagnostics are for. The goal is to point people in the right direction quickly, not make them guess which service label fits best.</p>
-    </div>
-    <a class="btn btn-brand btn-lg" href="/contact/">Get in touch</a>
   </div>
 </section>
