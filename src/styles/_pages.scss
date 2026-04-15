@@ -1,6 +1,6 @@
 .page-standard .page-title,
 .page-home .hero-title {
-  max-width: 14ch;
+  max-width: none;
 }
 
 .hero-title {
@@ -26,16 +26,15 @@
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 77%;
-  background: linear-gradient(90deg, rgba(12, 38, 68, 0.8) 0%, rgba(12, 38, 68, 0.1) 64%, rgba(12, 38, 68, 0.01) 62%, rgba(12, 38, 68, 0.08) 50%), 
-              linear-gradient(180deg, rgba(12, 38, 68, 0.04), rgba(12, 38, 68, 0.28));
+  height: 100%;
+  background: linear-gradient(90deg, rgba(12, 38, 68, 0.8) 0%, rgba(12, 38, 68, 0.08) 50%);
 }
 
 .page-home .hero-media img {
   position: absolute;
   inset: 0 0 auto 0;
   width: 100%;
-  height: 77%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -45,6 +44,15 @@
   z-index: 1;
   padding-top: 8.75rem;
   padding-bottom: 3.5rem;
+}
+
+.page-home .hero-services-section {
+  position: relative;
+  background: rgba(255, 250, 244, 0.92);
+}
+
+.page-home .hero-services-container {
+  padding: 1rem 0 3rem 0;
 }
 
 .page-home .hero-copy {
@@ -87,6 +95,10 @@
 @media (max-width: 991px) {
   .page-home .hero-grid-full {
     padding-top: 4.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .page-home .hero-services-container {
     padding-bottom: 2rem;
   }
 
@@ -142,7 +154,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 1.75rem 1.9rem;
+  padding: 1rem;
   background: linear-gradient(180deg, rgba(12, 38, 68, 0), rgba(12, 38, 68, 0.42));
   z-index: 3;
 }
@@ -194,9 +206,9 @@
   position: absolute;
   left: 0;
   bottom: 0;
-  padding: 1.75rem 1.9rem;
-  background: linear-gradient(180deg, rgba(12, 38, 68, 0), rgba(12, 38, 68, 0.42));
   width: 100%;
+  padding: 1rem;
+  background: linear-gradient(180deg, rgba(12, 38, 68, 0), rgba(12, 38, 68, 0.42));
 }
 
 .services-banner-title .page-title {
@@ -265,7 +277,7 @@
   }
 
   .services-banner-title {
-    padding: 1.25rem 1.4rem;
+    padding: 1rem;
   }
 
   .services-detail-shell {
@@ -273,7 +285,7 @@
   }
 
   .about-hero-title {
-    padding: 1.25rem 1.4rem;
+    padding: 1rem;
   }
 }
 
@@ -315,10 +327,26 @@
   border-top: 1px solid rgba(15, 38, 64, 0.08);
 }
 
-@media (max-width: 600px) {
-  .page-standard .page-title, .page-home .hero-title {
-    max-width: 10ch;
+@media (max-width: 599px) {
+  .page-home .page-hero {
+    background: rgba(255, 250, 244, 0.92);
   }
+
+  .hero-service-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+  }
+
+  .about-hero {
+    min-height: auto;
+    aspect-ratio: 16 / 9;
+  }
+
+  .about-hero-title .page-title {
+    font-size: clamp(1.9rem, 7vw, 2.75rem);
+    line-height: 1.05;
+  }
+
   .page-home .hero-lead {
     max-width: 12rem;
     font-size: 0.8rem;

@@ -83,7 +83,7 @@ h4 {
 .section-heading h2,
 .page-title,
 .hero-title {
-  font-size: clamp(2.5rem, 5vw, 4.6rem);
+  font-size: clamp(2.2rem, 5vw, 4.6rem);
   line-height: 0.98;
   margin-bottom: 1rem;
 }
@@ -167,5 +167,6 @@ h4 {
       font-size: clamp(1.8rem, 5vw, 4.6rem);
       line-height: 1.2;
       margin-bottom: 1rem;
+      padding-right: 24rem;
   }
 }
