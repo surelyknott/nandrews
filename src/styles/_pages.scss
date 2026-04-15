@@ -96,6 +96,65 @@
   }
 }
 
+.about-hero {
+  position: relative;
+  min-height: clamp(320px, 48vw, 620px);
+  overflow: hidden;
+}
+
+.page-about .page-banner {
+  padding-top: 2rem;
+  padding-bottom: 0;
+}
+
+.about-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.about-hero-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(12, 38, 68, 0.12), rgba(12, 38, 68, 0.28));
+  z-index: 2;
+}
+
+.about-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-hero-image-current {
+  z-index: 0;
+}
+
+.about-hero-image-past {
+  z-index: 1;
+  animation: about-hero-fade 8s ease-in-out infinite;
+}
+
+.about-copy {
+  max-width: 56rem;
+}
+
+.about-copy p + p {
+  margin-top: 1rem;
+}
+
+@keyframes about-hero-fade {
+  0%, 40% {
+    opacity: 1;
+  }
+
+  55%, 100% {
+    opacity: 0;
+  }
+}
+
 .services-banner {
   position: relative;
   overflow: hidden;

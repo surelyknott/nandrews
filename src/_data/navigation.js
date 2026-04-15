@@ -1,6 +1,6 @@
 module.exports = [
   { label: 'Home', url: '/' },
-  { label: 'About', url: '/about/' },
   { label: 'Services', url: '/services/' },
+  { label: 'About', url: '/about/' },
   { label: 'Contact', url: '/contact/' }
 ];
