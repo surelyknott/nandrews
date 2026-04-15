@@ -25,13 +25,13 @@ useBookingScripts: true
     <div class="hero-services-shell">
       <div class="service-grid hero-service-grid">
         {% for service in services %}
-        <article class="service-card">
+        <a class="service-card service-card-link" href="/services/" aria-label="View services page for {{ service.title }}">
           <img src="{{ service.image }}" alt="{{ service.title }}">
           <div class="service-card-body">
             <h3>{{ service.title }}</h3>
             <p>{{ service.summary }}</p>
           </div>
-        </article>
+        </a>
         {% endfor %}
       </div>
     </div>
