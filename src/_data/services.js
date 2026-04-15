@@ -2,7 +2,7 @@ module.exports = [
   {
     title: 'MOT',
     summary: 'Straightforward MOT support with practical advice before and after the test, so customers know exactly what needs attention.',
-    image: 'assets/images/MOT_Test_-_Logo.svg.png'
+    image: '/assets/images/MOT_Test_-_Logo-small.webp'
   },
   {
     title: 'Servicing',
