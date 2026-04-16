@@ -7,8 +7,6 @@
   max-width: 11ch;
 }
 
-
-
 .page-home .page-hero {
   position: relative;
   overflow: hidden;
@@ -48,11 +46,11 @@
 
 .page-home .hero-services-section {
   position: relative;
-  background: rgba(255, 250, 244, 0.92);
+  // background: rgba(255, 250, 244, 0.92);
 }
 
 .page-home .hero-services-container {
-  padding: 1rem 0 3rem 0;
+  padding: 1rem 0 0.5rem 0;
 }
 
 .page-home .hero-copy {
@@ -92,6 +90,10 @@
   margin-bottom: 0.35rem;
 }
 
+.page-home .visit-or-call-block {
+  margin: 1rem 0 0.5rem 0;
+}
+
 @media (max-width: 991px) {
   .page-home .hero-grid-full {
     padding-top: 4.25rem;
@@ -99,7 +101,7 @@
   }
 
   .page-home .hero-services-container {
-    padding-bottom: 2rem;
+    padding: 0.5rem 0.5rem 0 0.5rem;
   }
 
   .page-home .hero-panel {

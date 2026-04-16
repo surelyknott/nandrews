@@ -205,13 +205,6 @@
     padding: 1.5rem 1.15rem 0 1.6rem;
 }
 
-.heritage-photo-frame {
-    position: relative;
-    z-index: 1;
-    border: 14px solid white;
-    background: white;
-}
-
 .heritage-photo-frame img {
   display: block;
   width: 100%;
@@ -223,7 +216,6 @@
   position: relative;
   z-index: 1;
   margin: 0 0 1.5rem 0;
-  padding-left: 1rem;
   color: var(--color-muted);
   font-size: 0.95rem;
 }
@@ -253,12 +245,8 @@
   }
 
   .heritage-photo-frame {
-    max-width: 35rem;
+    // max-width: 35rem;
     margin: 0 auto;
-  }
-
-  .heritage-photo figcaption {
-    padding-left: 1rem;
   }
 
   .hero-service-grid {

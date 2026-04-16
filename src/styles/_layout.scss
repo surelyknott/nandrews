@@ -97,7 +97,7 @@
 .footer-grid,
 .cta-panel {
   display: grid;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .hero-grid,
@@ -122,10 +122,6 @@
 
 .hero-services-shell {
   grid-column: 1 / -1;
-}
-
-.hero-service-grid {
-  margin-top: 2rem;
 }
 
 .hero-service-grid .service-card img {
@@ -219,9 +215,10 @@
 }
 
 .site-footer {
-  padding: 4rem 0 2rem;
-  background: linear-gradient(180deg, rgba(12, 38, 68, 0.98), rgba(10, 28, 49, 0.98));
-  border-top: 1px solid rgba(18, 59, 104, 0.2);
+    padding: 4rem 0 2rem;
+    margin-top: 1rem;
+    background: linear-gradient(180deg, rgba(12, 38, 68, 0.98), rgba(10, 28, 49, 0.98));
+    border-top: 1px solid rgba(18, 59, 104, 0.2);
 }
 
 .footer-links {
