@@ -135,10 +135,13 @@ const updateDetailsState = () => {
   const intro = document.getElementById('bookingDetailsIntro');
   const badge = document.getElementById('bookingDetailsBadge');
   const lockMessage = document.getElementById('bookingFormLock');
+  const motCollectionOption = document.getElementById('motCollectionOption');
+  const motCollectionRequired = document.getElementById('motCollectionRequired');
   const visibleFields = document.querySelectorAll(
     '#bookingForm input:not([type="hidden"]), #bookingForm textarea'
   );
   const isUnlocked = Boolean(state.selectedTime);
+  const isMotBooking = state.selectedService === 'MOT';
 
   if (detailsCard) {
     detailsCard.classList.toggle('is-locked', !isUnlocked);
@@ -162,6 +165,18 @@ const updateDetailsState = () => {
 
   if (lockMessage) {
     lockMessage.hidden = isUnlocked;
+  }
+
+  if (motCollectionOption) {
+    motCollectionOption.hidden = !isMotBooking;
+  }
+
+  if (motCollectionRequired) {
+    if (!isMotBooking) {
+      motCollectionRequired.checked = false;
+    }
+
+    motCollectionRequired.disabled = !isUnlocked || !isMotBooking;
   }
 };
 
@@ -429,6 +444,7 @@ const initBookingForm = () => {
       phone: form.phone.value,
       email: form.email.value,
       vehicle: form.vehicle.value,
+      collectionRequired: form.collection_required.checked,
       notes: form.notes.value
     };
 

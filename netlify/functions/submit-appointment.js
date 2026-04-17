@@ -10,6 +10,7 @@ const SHEET_HEADER_ROW = [
   'email',
   'phone',
   'vehicle',
+  'collection_required',
   'notes',
   'status',
   'created_at'
@@ -38,7 +39,7 @@ const formatCreatedAt = (date = new Date()) => {
   return `${day}-${month}-${year}T${hours}:${minutes}`;
 };
 
-const buildConfirmationHtml = ({ service, date, time, name, phone, vehicle, notes }) => {
+const buildConfirmationHtml = ({ service, date, time, name, phone, vehicle, collectionRequired, notes }) => {
   const lines = [
     `<p>Hi ${name},</p>`,
     `<p>Your appointment has been booked with ${templateConfig.site.businessName}.</p>`,
@@ -51,6 +52,7 @@ const buildConfirmationHtml = ({ service, date, time, name, phone, vehicle, note
     `Time: ${bookingRules.formatTimeLabel(time, templateConfig.site.locale)}<br>`,
     `Phone: ${phone}<br>`,
     `${vehicle ? `Vehicle: ${vehicle}<br>` : ''}`,
+    `${service === 'MOT' ? `Free collection and drop-off within 5 miles: ${collectionRequired ? 'Yes' : 'No'}<br>` : ''}`,
     `${notes ? `Notes: ${notes}<br>` : ''}`,
     '</p>',
     `<p>If anything changes, call the garage on ${templateConfig.site.contactPhone}.</p>`,
@@ -112,6 +114,7 @@ exports.handler = async (event) => {
   const phone = String(payload.phone || '').trim();
   const email = String(payload.email || '').trim();
   const vehicle = String(payload.vehicle || '').trim();
+  const collectionRequired = service === 'MOT' && Boolean(payload.collectionRequired);
   const notes = String(payload.notes || '').trim();
   const availableSlots = bookingRules.buildTimeSlots(templateConfig.booking);
   const sheetDate = bookingRules.formatDisplayDate(date, {
@@ -166,6 +169,7 @@ exports.handler = async (event) => {
       email,
       phone,
       vehicle,
+      collectionRequired ? 'Yes' : service === 'MOT' ? 'No' : '',
       notes,
       'confirmed',
       formatCreatedAt()
@@ -182,6 +186,7 @@ exports.handler = async (event) => {
           phone,
           email,
           vehicle,
+          collectionRequired,
           notes
         });
       } catch (error) {

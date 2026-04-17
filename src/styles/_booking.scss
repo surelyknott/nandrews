@@ -245,6 +245,22 @@ textarea.form-control {
   padding-block: 0.85rem;
 }
 
+.booking-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-navy-deep);
+}
+
+.booking-checkbox {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.25rem;
+  accent-color: var(--color-accent);
+}
+
 .time-slot-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
