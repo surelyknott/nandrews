@@ -10,10 +10,10 @@ const SHEET_HEADER_ROW = [
   'email',
   'phone',
   'vehicle',
-  'collection_required',
   'notes',
   'status',
-  'created_at'
+  'created_at',
+  'collection_required'
 ];
 
 const parseJson = (body) => {
@@ -169,10 +169,10 @@ exports.handler = async (event) => {
       email,
       phone,
       vehicle,
-      collectionRequired ? 'Yes' : service === 'MOT' ? 'No' : '',
       notes,
       'confirmed',
-      formatCreatedAt()
+      formatCreatedAt(),
+      collectionRequired ? 'Yes' : service === 'MOT' ? 'No' : ''
     ]);
 
     let emailSent = false;
