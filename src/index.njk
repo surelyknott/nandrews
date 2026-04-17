@@ -44,9 +44,42 @@ useBookingScripts: true
 
 <section class="section-block homepage-reviews-section">
   <div class="container">
-    <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-    <div class="elfsight-app-e7ff830c-63d2-4cf0-bd75-6c3b162d9c9d" data-elfsight-app-lazy></div>
+    <div class="homepage-reviews-shell">
+      <div class="homepage-reviews-head">
+        <div class="homepage-reviews-brand">
+          <a class="homepage-google-wordmark" href="{{ reviews.googleUrl }}" target="_blank" rel="noreferrer" aria-label="View Google reviews for Nandrews">
+            <span class="homepage-google-g1">G</span><span class="homepage-google-g2">o</span><span class="homepage-google-g3">o</span><span class="homepage-google-g4">g</span><span class="homepage-google-g5">l</span><span class="homepage-google-g6">e</span>
+          </a>
+          <span class="homepage-reviews-rating">{{ reviews.rating }}</span>
+          <span class="homepage-reviews-stars" aria-label="{{ reviews.rating }} out of 5 stars">★★★★★</span>
+          <span class="homepage-reviews-count">({{ reviews.count }})</span>
+        </div>
+        <a class="btn btn-brand btn-lg homepage-reviews-cta" href="{{ reviews.writeReviewUrl }}" target="_blank" rel="noreferrer">Write a Review</a>
+      </div>
+
+      <div class="homepage-reviews-grid">
+        {% for review in reviews.items %}
+        <article class="homepage-review-card">
+          <div class="homepage-review-card-head">
+            <div class="homepage-review-avatar">{{ review.initials }}</div>
+            <div class="homepage-review-identity">
+              <div class="homepage-review-name-row">
+                <h3>{{ review.name }}</h3>
+                <span class="homepage-review-verified" aria-hidden="true">✓</span>
+              </div>
+              <div class="homepage-review-subrow">
+                <span class="homepage-review-google-mark">G</span>
+                <span class="homepage-review-date">{{ review.dateLabel }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="homepage-review-stars-row" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>{{ review.excerpt }}</p>
+          <a class="homepage-review-link" href="{{ reviews.googleUrl }}" target="_blank" rel="noreferrer">Read more</a>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
   </div>
 </section>
 
