@@ -5,20 +5,18 @@ description: Contact Nandrews Garage Ltd in Southampton.
 bodyClass: page-standard
 useContactScripts: true
 ---
-<section class="page-banner">
-  <div class="container banner-grid">
+<section class="contact-banner">
+  <div class="container">
     <div>
       <span class="section-kicker">Contact</span>
       <h1 class="page-title">Call, message, or visit the garage.</h1>
       <p class="page-lead">Use the form if you want to explain the issue in advance, or call directly if you would rather speak to someone about the vehicle.</p>
     </div>
-    <img src="/assets/images/scene-contact.svg" alt="Nandrews Garage contact page visual placeholder">
-  </div>
 </section>
 
 <section class="section-block">
   <div class="container contact-grid">
-    <section class="surface-card">
+    <section>
       <form class="contact-form" name="contact" method="POST" action="/contact/?success=1" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="contact">
         <p class="d-none">
@@ -58,15 +56,17 @@ useContactScripts: true
       <h2>Nandrews Garage Ltd</h2>
       <ul class="list-clean">
         <li><strong>Phone:</strong> <a href="tel:{{ site.contactPhoneHref or site.contactPhone }}">{{ site.contactPhone }}</a></li>
-        {% for line in site.addressLines %}
-        <li><strong>{% if loop.first %}Address:{% else %}&nbsp;{% endif %}</strong> {{ line }}</li>
-        {% endfor %}
-        <li><strong>Area:</strong> {{ site.serviceArea }}</li>
+        <li>
+          <strong>Address:</strong><br>
+          {% for line in site.addressLines %}
+          {{ line }}{% if not loop.last %}<br>{% endif %}
+          {% endfor %}
+        </li>
       </ul>
 
       <div class="contact-note">
-        <p>Useful things to include:</p>
-        <ul class="list-clean">
+        <p class="contact-note-title">Useful things to include:</p>
+        <ul class="list-clean contact-bullet-list">
           <li>vehicle registration or model</li>
           <li>warning lights or symptoms</li>
           <li>whether it is for MOT, service, diagnostics, or repair</li>
@@ -75,7 +75,7 @@ useContactScripts: true
       </div>
 
       <div class="contact-note">
-        <p>Opening hours:</p>
+        <p class="contact-note-title">Opening hours:</p>
         <ul class="list-clean">
           {% for item in site.openingHours %}
           <li><strong>{{ item.day }}:</strong> {{ item.hours }}</li>

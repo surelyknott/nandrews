@@ -255,6 +255,10 @@
   margin-top: 1rem;
 }
 
+.contact-banner {
+  padding: 2.75rem 0 1.75rem;
+}
+
 @media (min-width: 768px) {
   .page-services .service-detail-row {
     grid-template-columns: minmax(260px, 320px) minmax(0, 720px);
@@ -301,7 +305,12 @@
   gap: 1rem;
 }
 
-.contact-form,
+.contact-form .form-control,
+.contact-form .btn,
+.contact-form .alert {
+  border-radius: 0;
+}
+
 .copy-card,
 .contact-panel {
   background: rgba(255, 255, 255, 0.82);
@@ -327,6 +336,20 @@
   margin-top: 2rem;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(15, 38, 64, 0.08);
+}
+
+.contact-panel .contact-note-title {
+  margin-bottom: 0.75rem;
+  color: #000;
+}
+
+.contact-bullet-list {
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.contact-bullet-list li + li {
+  margin-top: 0.5rem;
 }
 
 @media (max-width: 599px) {
