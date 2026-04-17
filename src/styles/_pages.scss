@@ -579,6 +579,25 @@
     grid-template-columns: 1fr;
   }
 
+  .page-home .homepage-reviews-brand {
+    max-width: 16rem;
+    justify-content: center;
+  }
+
+  .page-home .homepage-reviews-stars,
+  .page-home .homepage-reviews-count {
+    margin-top: -0.15rem;
+  }
+
+  .page-home .homepage-reviews-count {
+    width: 100%;
+    text-align: center;
+  }
+
+  .page-home .homepage-reviews-cta {
+    display: none;
+  }
+
   .page-home .homepage-reviews-count {
     font-size: 1.2rem;
   }
