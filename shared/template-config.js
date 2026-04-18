@@ -18,7 +18,7 @@
     serviceArea: 'Based in Shirley, Southampton and serving local drivers across the area.',
     analyticsId: '',
     siteUrl: '',
-    logoPath: '/assets/images/nandrews-logo.png',
+    logoPath: '/assets/images/nandrews-garage-logo.webp',
     faviconPath: '/assets/images/nandrews-logo.png',
     addressLines: [
       '275 Shirley Rd',

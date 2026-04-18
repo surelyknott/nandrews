@@ -56,6 +56,27 @@
 }
 
 @media (max-width: 500px) {
+  .navbar-custom {
+    --bs-navbar-padding-y: 0;
+    background: rgb(15, 43, 100);
+  }
+
+  .navbar-expand-brand .navbar-collapse {
+    margin-bottom: 0.35rem;
+  }
+
+  .navbar-expand-brand .nav-link {
+    color: white;
+  }
+
+  .navbar-expand-brand .nav-link.is-active {
+    color: var(--color-accent);
+  }
+
+  .navbar-toggler {
+    background-color: #77acec38;
+  }
+
   .brand-mark strong {
     display: none;
   }
